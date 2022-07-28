@@ -30,25 +30,55 @@ O monitor DNS usa o serviço DNS (Domain Name System) para localizar informaçõ
 O monitor DNS usa o endereço IP do host para pesquisar o nome do host ou o nome do host para pesquisar o endereço IP. O monitor mede o desempenho do serviço registrando o resultado da pesquisa e os tempos de resposta. O monitor também registra detalhes sobre cada consulta enviada ao servidor.
 #
 # Instalação e Funcionamento
-
+Siga os proximos passos para fazer uso da ferramenta: 
 ## Como instalar
+Antes, você deve garantir que as bibliotecas necessárias estão instaladas no seu ambiente:
+
+- [Libcurl](https://curl.se/libcurl/)
+
+Em seu terminal, clone este repositório:
+```bash
+git clone https://github.com/42sp/42labs-selection-process-v2-gsilva-v WebServiceMonitor
+```
+Após a conclusão execute:
+```bash
+cd WebServiceMonitor && make build
+```
+Ao fim da compilação, o monitor estará pronto para ser usado.
 
 ## Como criar um arquivo de configuração
+Na pasta `/conf` deste repositório, crie um arquivo com a extensão `.db`, nele coloque as configurações dos serviços que deseja monitorar.
+Esse arquivo de configuração deve seguir os seguintes padrões:
+
+- Cada linha deve conter um serrviço a ser monitorado.
+
+intra	HTTP	intra.42.fr	GET	301	10
+- Os itens da linha devem estar em ordem (apelido do serviço, protocólo, endereço) e separados por tabulações entre eles.
+	
+	- Para monitoramento por protocólo HTTP, deve-se colocar mais 3 configurações: Método HTTP, status de response esperado e intervalo entre os testes (em segundos). Também separados por tabulações
+
+	- Para monitoramento por PING, deve-se colocar apenas o intervalo ao final da linha
 
 ## Como usar a ferramenta
+Após a compilação e criação do seu arquivo de configuração, execute em seu terminal:
+```./monitoring ./conf/{seu_arquivo}```
+
+O programa deve começar a ser executado logo em seguida, mostrando os status dos monitorados
 
 #
 # Resultados
 
 ## Sobre o log que é gerado
 
-### Como ler o log
+O log que aparece no terminal contém informações como: nome do monitorado, resultado do ultimo teste
 
 ### Quais sinais deve receber mais atenção
-
+Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontra em `/logs/errors.log`, nesse arquivo terá, com mais profundidade qual o problema ocorrido sobre o monitorado.
 
 #
 # Bibliografia
 - [IBM Internet Service Monitoring](https://www.ibm.com/docs/en/capm?topic=interface-available-internet-service-monitoring-monitors)
 
 - [Ping Explaination](https://www.cloudradar.io/blog/web-monitoring-ping-vs-tcp-vs-http-checks)
+
+- [LibCurl Explaination](https://curl.se/libcurl/)

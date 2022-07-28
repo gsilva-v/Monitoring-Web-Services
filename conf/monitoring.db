@@ -1,5 +1,5 @@
-intra	HTTP	intra.42.fr	GET	302	10
+intra	HTTP	intra.42.fr	GET	301	10
 google	HTTP	google.com	GET	301	5
-curl	HTTP	curl.se/libcurl/c/example.html	GET	200	5
+curl	HTTP	curl.se/libcurl/c/example.html	GET	301	5
 game ping test	PING	game.42sp.org.br	60
 workspaces monitoring	PING	workspaces.42sp.org.br	60

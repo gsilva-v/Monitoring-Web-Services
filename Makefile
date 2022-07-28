@@ -2,9 +2,8 @@ NAME = monitoring
 
 CC = gcc
 INCLUDE = -I ./include/
-CFLAGS = -g $(INCLUDE) -lcurl -pthread # -Wall -Werror -Wextra
-
-
+CFLAGS = -g $(INCLUDE)  # -Wall -Werror -Wextra
+CURLFLAGS = -lcurl -lbsd
 RM = rm -rf
 
 PATH_SRCS = ./src/
@@ -19,17 +18,19 @@ PATH_OBJS = ./objs/
 
 SRCS = 	$(PATH_MAIN)main.c $(PATH_MAIN)run.c \
 		$(PATH_HD)http_handler.c \
-		$(PATH_PC)parse_conf.c \
+		$(PATH_PC)parse_http.c \
 		$(PATH_TIME)time.c \
 		$(PATH_UTIL)split.c $(PATH_UTIL)strjoin.c
 		
 
 OBJS = $(patsubst $(PATH_SRCS)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
+build : all
+
 all: $(NAME)
 
 $(NAME): $(OBJS) 
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(MYSQL_FLAGS) -lcurl -lbsd
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(CURLFLAGS)
 
 $(PATH_OBJS)%.o: $(PATH_SRCS)%.c
 	@mkdir -p $(PATH_OBJS)
@@ -38,7 +39,7 @@ $(PATH_OBJS)%.o: $(PATH_SRCS)%.c
 	@mkdir -p $(PATH_OBJS)parse_conf/
 	@mkdir -p $(PATH_OBJS)time/
 	@mkdir -p $(PATH_OBJS)util/
-	$(CC) $(CFLAGS) -c $< -o $@ $(MYSQL_FLAGS) -lbsd
+	$(CC) $(CFLAGS) -c $< -o $@ $(CURLFLAGS)
 
 clean: 
 	$(RM) $(PATH_OBJS)
