@@ -4,12 +4,16 @@
 void	http_manager(HTTP_Monitoring **monitor){
 	int	i = 0;
 
+		
 	while (true){
 		if (monitor[i] == NULL){
 			i = 0;
 			continue;
 		}
-		http_handler(monitor[i]);
+		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000){
+			http_handler(monitor[i]);
+			monitor[i]->last_monitoring = current_time();
+		}
 		i++;
 	}
 }
@@ -49,13 +53,16 @@ void	http_handler(HTTP_Monitoring *monitor){
 		long http_status = 0;
 		curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_status);
 
-		printf("HTTP Request to: %s\nstatus: %ld\n", monitor->url, http_status);
-		
 		if(res != CURLE_OK){
 			fprintf(stderr, "curl_easy_perform() failed: %s\n",
 					curl_easy_strerror(res));
-	}
-
-	curl_easy_cleanup(curl);
+		}
+		if (http_status != monitor->status){
+			monitor->last_request_status = false;
+		} else {
+			monitor->last_request_status = true;
+		}
+		printf("Monitored: %s\nStatus: %s\n", monitor->name, (monitor->last_request_status == true ? "OK": "KO"));
+		curl_easy_cleanup(curl);
 	}
 }

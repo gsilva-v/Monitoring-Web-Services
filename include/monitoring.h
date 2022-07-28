@@ -20,9 +20,8 @@ typedef struct monitoring_http {
 	int		status;
 	char	*method;
 	int		pause;
-	int		last_monitoring;
-	
-
+	long	last_monitoring;
+	bool	last_request_status;
 } HTTP_Monitoring;
 
 typedef struct monitoring_ping {

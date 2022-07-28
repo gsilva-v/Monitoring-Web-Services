@@ -11,6 +11,7 @@ PATH_SRCS = ./src/
 PATH_MAIN = $(PATH_SRCS)main/
 PATH_HD = $(PATH_SRCS)handlers/
 PATH_PC = $(PATH_SRCS)parse_conf/
+PATH_TIME = $(PATH_SRCS)time/
 PATH_UTIL = $(PATH_SRCS)util/
 
 
@@ -19,6 +20,7 @@ PATH_OBJS = ./objs/
 SRCS = 	$(PATH_MAIN)main.c $(PATH_MAIN)run.c \
 		$(PATH_HD)http_handler.c \
 		$(PATH_PC)parse_conf.c \
+		$(PATH_TIME)time.c \
 		$(PATH_UTIL)split.c $(PATH_UTIL)strjoin.c
 		
 
@@ -34,6 +36,7 @@ $(PATH_OBJS)%.o: $(PATH_SRCS)%.c
 	@mkdir -p $(PATH_OBJS)main/
 	@mkdir -p $(PATH_OBJS)handlers/
 	@mkdir -p $(PATH_OBJS)parse_conf/
+	@mkdir -p $(PATH_OBJS)time/
 	@mkdir -p $(PATH_OBJS)util/
 	$(CC) $(CFLAGS) -c $< -o $@ $(MYSQL_FLAGS) -lbsd
 

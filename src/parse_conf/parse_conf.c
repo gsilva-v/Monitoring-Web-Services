@@ -39,7 +39,7 @@ HTTP_Monitoring **parse_http(char *file_conf){
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "HTTP")){
 			ret[i] = calloc(1, sizeof(HTTP_Monitoring));
-			conf = split(buffer, '\t');
+			conf = split(buffer, '\t');	
 			// intra	HTTP	intra.42.fr	GET	200	120
 			ret[i]->name = strdup(conf[0]);
 			ret[i]->protocol = strdup(conf[1]);
@@ -47,6 +47,7 @@ HTTP_Monitoring **parse_http(char *file_conf){
 			ret[i]->method = strdup(conf[3]);
 			ret[i]->status = atoi(conf[4]);
 			ret[i]->pause = atoi(conf[5]);
+			ret[i]->last_monitoring = current_time();
 			i++;
 		}
 	}
