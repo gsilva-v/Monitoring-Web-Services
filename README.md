@@ -5,9 +5,8 @@
 ## O que é um Monitor de Serviços Web?
  O Monitoramento de Serviço Web funciona emulando as ações de um usuário real. Ele pesquisa e testa regularmente os serviços da Internet para verificar seu status e desempenho.
 
-
 ### E para que serve?
--  É possível avaliar o desempenho dos seus websites e controlar a sua nuvem e (outros) serviços.
+- É possível avaliar o desempenho dos seus websites e controlar a sua nuvem e (outros) serviços.
 - Uma ferramenta de monitoramento pode ser usada para executar um teste de ping. O ping indica se é possível conectar-se ao seu website.
 - O monitoramento de serviços de Internet também ajuda a reduzir o tempo de inatividade (ou seja, impedir panes nos seus servidores).
 
@@ -33,6 +32,8 @@ O monitor DNS usa o endereço IP do host para pesquisar o nome do host ou o nome
 # Instalação e Funcionamento
 
 ## Como instalar
+
+## Como criar um arquivo de configuração
 
 ## Como usar a ferramenta
 
