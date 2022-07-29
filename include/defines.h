@@ -8,7 +8,7 @@
 # define PING "\033[0mPing: %.1f ms\033[0m\n\n"
 # define PLOG "%s Monitored: %s -> Url: %s; Ping : %.1f ms\n"
 # define PLOGS "%s Monitored: %s -> Ping : %.1f ms\n"
-# define HLOG "%s Monitored: %s -> Url: %s; Expected Status: %d; Working : %s\n"
+# define HLOG "%s Monitored: %s -> Url: %s; Expected Status: %d; Working : %s; Latency: %.1f\n"
 # define HLOGS "%s Monitored: %s -> Working : %s\n"
 # define OK "\033[32mOK"
 # define KO "KO"

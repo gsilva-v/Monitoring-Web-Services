@@ -33,6 +33,7 @@ static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdat
 
 static void	show_log(PING_Monitoring *monitor){
 	char *stamp = get_time_stamp();
+
 	printf(MONITORED, stamp, monitor->name);
 	printf(PING, monitor->latency);
 	if (!log_file.simplified){

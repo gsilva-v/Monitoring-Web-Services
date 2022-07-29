@@ -56,9 +56,12 @@ HTTP_Monitoring **parse_http(char *file_conf){
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "HTTP")){
 			conf = split(buffer, '\t');	
-			if (check_line(conf) == false)
+			if (check_line(conf) == false){
+				free_matrix(conf);
 				exit(1);
+			}
 			ret[i] = set_config(conf);
+			free_matrix(conf);
 			i++;
 		}
 	}

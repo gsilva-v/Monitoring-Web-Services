@@ -18,11 +18,12 @@ typedef struct monitoring_http {
 	char	*name;
 	char	*protocol;
 	char	*url;
-	int		status;
 	char	*method;
+	int		status;
 	int		pause;
 	long	last_monitoring;
 	bool	last_request_status;
+	float	latency;
 } HTTP_Monitoring;
 
 typedef struct monitoring_ping {
@@ -74,5 +75,6 @@ char	**split(char *s, char c);
 char	*strjoin(const char *s1, const char *s2);
 int		check_ber(char *what_map, char *extension);
 int		matrix_len(char **m);
+void	free_matrix(char **m);
 
 #endif // MONITORING_H

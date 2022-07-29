@@ -34,7 +34,7 @@ Siga os proximos passos para fazer uso da ferramenta:
 ## Como instalar
 Antes, você deve garantir que as bibliotecas necessárias estão instaladas no seu ambiente:
 
-- [Libcurl] (https://curl.se/libcurl/)
+- [Libcurl](https://curl.se/libcurl/)
 
 Em seu terminal, clone este repositório:
 ```bash
