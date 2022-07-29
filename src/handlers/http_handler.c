@@ -1,6 +1,5 @@
 #include "monitoring.h"
 
-
 static void	http_handler(HTTP_Monitoring *monitor);
 
 static bool has_awake(HTTP_Monitoring **monitor){
@@ -16,14 +15,13 @@ void	http_manager(HTTP_Monitoring **monitor){
 	int	i = 0;
 	static int first = 1;
 	if (has_awake(monitor) || first == 1)
-		printf("Ping routine started: checking necessary requests ...\n");
+		printf("HTTP routine started: checking necessary requests ...\n");
 	while (monitor[i]){
-		
 		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
 			http_handler(monitor[i]);
 			monitor[i]->last_monitoring = current_time();
 			if (monitor[i + 1] == NULL)
-				printf("Finish routine\n--------------------------------\n");
+				printf(FROUTINE);
 		}
 		i++;
 	}
@@ -49,15 +47,14 @@ static CURL *set_options_curl(CURL *curl , HTTP_Monitoring *monitor){
 
 static void	show_log(HTTP_Monitoring *monitor){
 	char *stamp = get_time_stamp();
-	printf("%s Monitored: \033[33m%s\n", stamp, monitor->name);
-	printf("\033[0mStatus: %s %d\033[0m\n\n", \
-		(monitor->last_request_status == true ? "\033[32mOK": "\033[31mKO expected "), monitor->status);
+	printf(MONITORED, stamp, monitor->name);
+	printf(STATUS, (monitor->last_request_status == true ? OK : KOE), monitor->status);
 	if (!log_file.simplified){
-		dprintf(log_file.log_fd, "%s Monitored: %s -> Url: %s; Expected Status: %d; Working : %s\n",stamp,  monitor->name, monitor->url, monitor->status, \
-			(monitor->last_request_status == true ? "OK Success": "KO The service didn't respond as expected, something might be broken"));
+		dprintf(log_file.log_fd, HLOG, stamp,  monitor->name, monitor->url, monitor->status, \
+			(monitor->last_request_status == true ? SUCCESS : FAILED));
 	} else{
-		dprintf(log_file.log_fd, "%s Monitored: %s -> Working : %s\n", stamp, monitor->name, \
-			(monitor->last_request_status == true ? "OK Success": "KO"));
+		dprintf(log_file.log_fd, HLOGS, stamp, monitor->name, \
+			(monitor->last_request_status == true ? SUCCESS : KO));
 	}
 }
 

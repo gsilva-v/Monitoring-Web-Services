@@ -13,6 +13,7 @@ static bool has_awake(PING_Monitoring **monitor){
 void	ping_manager(PING_Monitoring **monitor){
 	int	i = 0;
 	static int first = 1;
+
 	if (has_awake(monitor) || first == 1)
 		printf("Ping routine started: checking necessary requests ...\n");
 	for (int i = 0; monitor[i]; i++){
@@ -20,7 +21,7 @@ void	ping_manager(PING_Monitoring **monitor){
 			ping_handler(monitor[i]);
 			monitor[i]->last_monitoring = current_time();
 			if (monitor[i + 1] == NULL)
-				printf("Finish routine\n--------------------------------\n");
+				printf(FROUTINE);
 		}
 	}
 	first = 0;
@@ -32,12 +33,12 @@ static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdat
 
 static void	show_log(PING_Monitoring *monitor){
 	char *stamp = get_time_stamp();
-	printf("%s Monitored: \033[33m%s\n", stamp, monitor->name);
-	printf("\033[0mPing: %.1f ms\033[0m\n\n",monitor->latency);
+	printf(MONITORED, stamp, monitor->name);
+	printf(PING, monitor->latency);
 	if (!log_file.simplified){
-		dprintf(log_file.log_fd, "%s Monitored: %s -> Url: %s; Ping : %.1f ms\n", stamp, monitor->name, monitor->url, monitor->latency);
+		dprintf(log_file.log_fd, PLOG, stamp, monitor->name, monitor->url, monitor->latency);
 	} else{
-		dprintf(log_file.log_fd, "%s Monitored: %s -> Ping : %.1f ms\n", stamp, monitor->name, monitor->latency);
+		dprintf(log_file.log_fd, PLOGS, stamp, monitor->name, monitor->latency);
 	}
 }
 

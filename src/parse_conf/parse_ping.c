@@ -7,7 +7,7 @@ static int	count_ping(char *file_conf){
 	FILE *fd = fopen(file_conf, "r");
 
 	if (fd < 0){
-		printf("Invalid config file, Try Another!\n");
+		printf(INVCONF);
 		exit (1);
 	}
 	while (getline(&buffer, &buffer_size, fd) >= 0){
@@ -21,19 +21,18 @@ static int	count_ping(char *file_conf){
 
 static PING_Monitoring *set_config(char **conf){
 	PING_Monitoring *ret = calloc(1, sizeof(PING_Monitoring));
-// game ping test	PING	game.42sp.org.br	60
+
 	ret->name = strdup(conf[0]);
 	ret->protocol = strdup(conf[1]);
 	ret->url = strdup(conf[2]);
 	ret->pause = atoi(conf[3]);
-
 	ret->last_monitoring = current_time();
 	return ret;
 }
 
 static bool	check_line(char **line){
 	if (matrix_len(line) != 4){
-		printf("Error: Columns must be separeted by tabs\n");
+		printf(INVTABS);
 		return false;
 	}	
 	return true;
@@ -49,7 +48,7 @@ PING_Monitoring **parse_ping(char *file_conf){
 	FILE *fd = fopen(file_conf, "r");
 
 	if (fd < 0){
-		printf("Invalid config file, Try Another!\n");
+		printf(INVCONF);
 		exit (1);
 	}
 	while (getline(&buffer, &buffer_size, fd) >= 0){

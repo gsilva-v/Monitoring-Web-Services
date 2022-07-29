@@ -6,10 +6,10 @@ void check_flags(char **args){
 		if (strstr(args[i], "--simplify")){
 			log_file.simplified = true;
 		} else if (strstr(args[i], "--help")){
-			printf("Web Monitor: use ./monitoring [file config] [flags]\nAccepted flags: \n--simplify : will simplify the generated log\n");
+			printf(HELP);
 			exit(1);
 		} else if (strstr(args[i], "-")){
-			printf("Sintax error: Invalid flags or option; %s\nUse \"--help\" to see how to use command\n", args[i]);
+			printf(INVUSE, args[i]);
 			exit(1);	
 		}
 	}

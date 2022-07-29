@@ -12,6 +12,6 @@ int main(int argc, char **argv)
 	if (conf_file)
 		run(conf_file);
 	else
-		printf("Need one config file: conf/monitoring.db");
+		printf(MISSARG);
 	return 0;
 }

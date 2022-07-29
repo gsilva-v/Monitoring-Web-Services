@@ -7,7 +7,7 @@ static int	count_http(char *file_conf){
 	FILE *fd = fopen(file_conf, "r");
 
 	if (fd < 0){
-		printf("Invalid config file, Try Another!\n");
+		printf(INVCONF);
 		exit (1);
 	}
 	while (getline(&buffer, &buffer_size, fd) >= 0){
@@ -21,7 +21,7 @@ static int	count_http(char *file_conf){
 
 static HTTP_Monitoring *set_config(char **conf){
 	HTTP_Monitoring *ret = calloc(1, sizeof(HTTP_Monitoring));
-	// intra	HTTP	intra.42.fr	GET	200	120
+
 	ret->name = strdup(conf[0]);
 	ret->protocol = strdup(conf[1]);
 	ret->url = strdup(conf[2]);
@@ -34,7 +34,7 @@ static HTTP_Monitoring *set_config(char **conf){
 
 static bool	check_line(char **line){
 	if (matrix_len(line) != 6){
-		printf("Error: Columns must be separeted by tabs\n");
+		printf(INVTABS);
 		return false;
 	}	
 	return true;
@@ -50,7 +50,7 @@ HTTP_Monitoring **parse_http(char *file_conf){
 	FILE *fd = fopen(file_conf, "r");
 
 	if (fd < 0){
-		printf("Invalid config file, Try Another!\n");
+		printf(INVCONF);
 		exit (1);
 	}
 	while (getline(&buffer, &buffer_size, fd) >= 0){
