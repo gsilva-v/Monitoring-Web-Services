@@ -1,0 +1,65 @@
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 301; Working : OK Success
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 301; Working : OK Success
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 301; Working : OK Success
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken
+Monitored: intra -> Working : OK Success
+Monitored: google -> Working : OK Success
+Monitored: 42 insta -> Working : KO
+Monitored: google -> Working : OK Success
+Monitored: 42 insta -> Working : KO
+Monitored: intra -> Url: intra.42.fr; Expected Status: 301; Working : OK Success
+Monitored: google -> Url: google.com; Expected Status: 301; Working : OK Success
+Monitored: 42 insta -> Url: instagram.com/42saopaulo/; Expected Status: 200; Working : KO The service didn't respond as expected, something might be broken

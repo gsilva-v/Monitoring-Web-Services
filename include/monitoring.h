@@ -1,7 +1,6 @@
 #if !defined(MONITORING_H)
 # define MONITORING_H
 
-
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
@@ -41,24 +40,39 @@ typedef struct monitoring_dns {
 	int		last_monitoring;
 } DNS_Monitoring;
 
+typedef struct log {
+	int		log_fd;
+	bool	simplified;
 
+} t_log ;
+
+
+extern t_log log_file;
+
+void check_flags(char **args);
+char *find_conf(char **args);
 
 
 /* TIME */
-
 void	miliseconds_sleep(int time_in_ms);
 long	current_time(void);
 long	passed_time(long time_started);
 
 
 
-int run(char *file_conf);
+int	run(char *file_conf);
 
-HTTP_Monitoring **parse_http(char *file_conf);
+/* HTTP */
+HTTP_Monitoring	**parse_http(char *file_conf);
 void	http_manager(HTTP_Monitoring **monitor);
-void	http_handler(HTTP_Monitoring *monitor);
 
 
+/* UTIL */
 char	**split(char *s, char c);
 char	*strjoin(const char *s1, const char *s2);
+int		check_ber(char *what_map, char *extension);
+int		matrix_len(char **m);
+
+
+
 #endif // MONITORING_H

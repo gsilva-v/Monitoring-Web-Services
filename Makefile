@@ -2,7 +2,7 @@ NAME = monitoring
 
 CC = gcc
 INCLUDE = -I ./include/
-CFLAGS = -g $(INCLUDE)  # -Wall -Werror -Wextra
+CFLAGS = -g $(INCLUDE) # -Wall -Werror -Wextra
 CURLFLAGS = -lcurl -lbsd
 RM = rm -rf
 
@@ -20,7 +20,8 @@ SRCS = 	$(PATH_MAIN)main.c $(PATH_MAIN)run.c \
 		$(PATH_HD)http_handler.c \
 		$(PATH_PC)parse_http.c \
 		$(PATH_TIME)time.c \
-		$(PATH_UTIL)split.c $(PATH_UTIL)strjoin.c
+		$(PATH_UTIL)split.c $(PATH_UTIL)strjoin.c $(PATH_UTIL)check_ext.c \
+		$(PATH_UTIL)matrix_len.c $(PATH_UTIL)parse_argv.c
 		
 
 OBJS = $(patsubst $(PATH_SRCS)%.c, $(PATH_OBJS)%.o, $(SRCS))
@@ -31,6 +32,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS) 
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(CURLFLAGS)
+	@mkdir -p logs
+	@touch ./logs/file.log
 
 $(PATH_OBJS)%.o: $(PATH_SRCS)%.c
 	@mkdir -p $(PATH_OBJS)
@@ -45,7 +48,7 @@ clean:
 	$(RM) $(PATH_OBJS)
 
 fclean: clean
-	$(RM) $(NAME)	
+	$(RM) $(NAME)
 
 re: fclean all
 

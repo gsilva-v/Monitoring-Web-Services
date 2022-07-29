@@ -70,7 +70,9 @@ O programa deve começar a ser executado logo em seguida, mostrando os status do
 
 ## Sobre o log que é gerado
 
-O log que aparece no terminal contém informações como: nome do monitorado, resultado do ultimo teste
+O log que aparece no terminal contém informações como: nome do monitorado, url requisitada, resultado esperado, resultado do ultimo teste.
+
+Para simplificar esse log, você pode usar a flag `--simplify`. Com a flag ativada, o log sera reduzido a apenas: nome do monitorado, resultado to ultimo teste.
 
 ### Quais sinais deve receber mais atenção
 Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontra em `/logs/errors.log`, nesse arquivo terá, com mais profundidade qual o problema ocorrido sobre o monitorado.

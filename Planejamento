@@ -1,7 +1,6 @@
+Definir oq será escrito no log, e com a flag simplify
 
-Parsear o arquivo monitoring.db.
+colocar uma flags de help que mostre como executar corretamente o programa
 
-Enviar as configurações pra um handler dependendo do metodo usado.
-
-Cada handler vai ser uma thread que ira lidar com cada monitoração.
+Definir oq sera mostrado no terminal
 
