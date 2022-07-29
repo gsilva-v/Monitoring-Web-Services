@@ -34,7 +34,7 @@ Siga os proximos passos para fazer uso da ferramenta:
 ## Como instalar
 Antes, você deve garantir que as bibliotecas necessárias estão instaladas no seu ambiente:
 
-- [Libcurl](https://curl.se/libcurl/)
+- [Libcurl] (https://curl.se/libcurl/)
 
 Em seu terminal, clone este repositório:
 ```bash
@@ -50,20 +50,28 @@ Ao fim da compilação, o monitor estará pronto para ser usado.
 Na pasta `/conf` deste repositório, crie um arquivo com a extensão `.db`, nele coloque as configurações dos serviços que deseja monitorar.
 Esse arquivo de configuração deve seguir os seguintes padrões:
 
-- Cada linha deve conter um serrviço a ser monitorado.
+- Cada linha deve conter um serviço a ser monitorado.
 
-intra	HTTP	intra.42.fr	GET	301	10
 - Os itens da linha devem estar em ordem (apelido do serviço, protocólo, endereço) e separados por tabulações entre eles.
 	
 	- Para monitoramento por protocólo HTTP, deve-se colocar mais 3 configurações: Método HTTP, status de response esperado e intervalo entre os testes (em segundos). Também separados por tabulações
 
 	- Para monitoramento por PING, deve-se colocar apenas o intervalo ao final da linha
 
+Exemplo de linha de configuração: 
+```bash 
+intra	HTTP	intra.42.fr	GET	301	10
+```
+
 ## Como usar a ferramenta
 Após a compilação e criação do seu arquivo de configuração, execute em seu terminal:
 ```./monitoring ./conf/{seu_arquivo}```
 
-O programa deve começar a ser executado logo em seguida, mostrando os status dos monitorados
+O programa deve começar a ser executado logo em seguida, mostrando os status dos monitorados.
+
+Também podemos usar com flags: 
+ - `--simplify` irá simplificar o log gerado.
+ - `--help` irá mostrar como passar os argumentos corretamente para a execução.
 
 #
 # Resultados

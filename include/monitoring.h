@@ -11,6 +11,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdbool.h>
+# include <curl/curl.h>
 
 typedef struct monitoring_http {
 	char	*name;
@@ -28,7 +29,8 @@ typedef struct monitoring_ping {
 	char	*protocol;
 	char	*url;
 	int		pause;
-	int		last_monitoring;
+	long	last_monitoring;
+	float	latency;
 } PING_Monitoring;
 
 typedef struct monitoring_dns {
@@ -37,7 +39,7 @@ typedef struct monitoring_dns {
 	char	*url;
 	char	*server;
 	int		pause;
-	int		last_monitoring;
+	long	last_monitoring;
 } DNS_Monitoring;
 
 typedef struct log {
@@ -57,7 +59,7 @@ char *find_conf(char **args);
 void	miliseconds_sleep(int time_in_ms);
 long	current_time(void);
 long	passed_time(long time_started);
-
+char *get_time_stamp(void);
 
 
 int	run(char *file_conf);
@@ -66,6 +68,8 @@ int	run(char *file_conf);
 HTTP_Monitoring	**parse_http(char *file_conf);
 void	http_manager(HTTP_Monitoring **monitor);
 
+PING_Monitoring **parse_ping(char *file_conf);
+void	ping_manager(PING_Monitoring **monitor);
 
 /* UTIL */
 char	**split(char *s, char c);
