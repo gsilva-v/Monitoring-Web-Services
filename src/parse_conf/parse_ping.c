@@ -7,14 +7,15 @@ static bool	check_line(char **line);
 PING_Monitoring **parse_ping(char *file_conf){
 	char			*buffer = NULL;
 	char			**conf = NULL; 
-	int				i = 0;
+	int				i = 0, count = count_ping(file_conf);
 	size_t			buffer_size = 0;
-	PING_Monitoring	**ret = calloc(count_ping(file_conf), \
-		sizeof(PING_Monitoring));
+	PING_Monitoring	**ret = calloc(count, sizeof(PING_Monitoring));
 	FILE			*fd = fopen(file_conf, "r");
 
 	if (fd == NULL)
 		error_exit(INVCONF, 1);
+	if (count == 0)
+		return NULL;
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "PING")){
 			conf = split(buffer, '\t');	

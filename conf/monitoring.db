@@ -1,4 +1,4 @@
-42insta	HTTP	instagram.com/42saopaulo/	GET	301	15
+intra	HTTP	intra.42.fr	GET	301	15
 google	HTTP	google.com	GET	301	20
 yahoo	DNS	yahoo.com	20	8.8.8.8
 google	DNS	google.com	30	8.8.8.8

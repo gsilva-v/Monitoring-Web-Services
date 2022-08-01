@@ -53,12 +53,14 @@ static void	ping_handler(PING_Monitoring *monitor){
 		curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, silent_curl);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, NULL);
-		if(curl_easy_perform(curl) != CURLE_OK)
-			fprintf(stderr, "curl_easy_perform() failed: %s\n",
-					curl_easy_strerror(CURLE_COULDNT_CONNECT));
+		if(curl_easy_perform(curl) != CURLE_OK){
+			printf("Ping: Name or service not know\n");
+			monitor->latency = 0;
+			goto showlog;
+		}
 		finish_time = current_time();
 		curl_easy_cleanup(curl);
 	}
-	monitor->latency = (finish_time - init_time) / 10.0f; 
-	show_log(monitor);
+	monitor->latency = (finish_time - init_time) / 10.0f;
+	showlog : show_log(monitor);
 }

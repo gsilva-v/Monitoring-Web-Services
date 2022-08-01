@@ -4,17 +4,18 @@ static int	count_http(char *file_conf);
 static HTTP_Monitoring *set_config(char **conf);
 static bool	check_line(char **line);
 
-HTTP_Monitoring **parse_http(char *file_conf){
+HTTP_Monitoring	**parse_http(char *file_conf){
 	char			*buffer = NULL;
 	char			**conf = NULL; 
-	int				i = 0;
+	int				i = 0, count = count_http(file_conf);
 	size_t			buffer_size = 0;
-	HTTP_Monitoring	**ret = calloc(count_http(file_conf), \
-		sizeof(HTTP_Monitoring));
+	HTTP_Monitoring	**ret = calloc(count, sizeof(HTTP_Monitoring));
 	FILE			*fd = fopen(file_conf, "r");
 
 	if (fd == NULL)
 		error_exit(INVCONF, 1);
+	if (count == 0)
+		return NULL;
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "HTTP")){
 			conf = split(buffer, '\t');	
@@ -47,7 +48,7 @@ static int	count_http(char *file_conf){
 	return (http_counter);
 }
 
-static HTTP_Monitoring *set_config(char **conf){
+static HTTP_Monitoring	*set_config(char **conf){
 	HTTP_Monitoring	*ret = calloc(1, sizeof(HTTP_Monitoring));
 
 	ret->name = strdup(conf[0]);

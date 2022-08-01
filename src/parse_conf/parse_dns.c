@@ -5,17 +5,18 @@ static bool	check_line(char **line);
 static DNS_Monitoring *set_config(char **conf);
 static char	*make_dns_query(DNS_Monitoring* parse);
 
-DNS_Monitoring **parse_dns(char *file_conf){
+DNS_Monitoring	**parse_dns(char *file_conf){
 	char			*buffer = NULL;
 	char			**conf = NULL; 
-	int				i = 0;
+	int				i = 0, count = count_dns(file_conf);
 	size_t			buffer_size = 0;
-	DNS_Monitoring	**ret = calloc(count_dns(file_conf), \
-		sizeof(DNS_Monitoring));
+	DNS_Monitoring	**ret = calloc(count, sizeof(DNS_Monitoring));
 	FILE			*fd = fopen(file_conf, "r");
 
 	if (fd == NULL)
 		error_exit(INVCONF, 1);
+	if (count == 0)
+		return NULL;
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "DNS")){
 			conf = split(buffer, '\t');	
@@ -48,7 +49,7 @@ static int	count_dns(char *file_conf){
 	return (dns_counter);
 }
 
-static char *make_dns_query(DNS_Monitoring* parse){
+static char	*make_dns_query(DNS_Monitoring* parse){
 	char	*query = strjoin(strdup("dig @"), parse->dns_server);
 
 	query = strtrim(query, "\n");
@@ -58,7 +59,7 @@ static char *make_dns_query(DNS_Monitoring* parse){
 	return query;
 }
 
-static DNS_Monitoring *set_config(char **conf){
+static DNS_Monitoring	*set_config(char **conf){
 	DNS_Monitoring	*ret = calloc(1, sizeof(DNS_Monitoring));
 
 	ret->name = strdup(conf[0]);

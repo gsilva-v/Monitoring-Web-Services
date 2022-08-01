@@ -65,7 +65,7 @@ static void	http_handler(HTTP_Monitoring *monitor){
 		strjoin(strdup("http://"), monitor->url) : strdup(monitor->url); 
 	
 		curl_easy_setopt(curl, CURLOPT_URL, url);
-		curl = set_options_curl(curl, monitor);		
+		curl = set_options_curl(curl, monitor);
 		if(curl_easy_perform(curl) != CURLE_OK){
 			fprintf(stderr, "curl_easy_perform() failed: %s\n",
 					curl_easy_strerror(CURLE_COULDNT_CONNECT));
