@@ -31,7 +31,7 @@ Abaixo, exemplo do arquivo descrito acima:
 
 intra	HTTP	intra.42.fr	GET	200	120
 game ping test	PING	game.42sp.org.br	60
-workspaces monitoring	PING	workspaces.42sp.org.br	60
+workspaces monitoring	PING	workspaces.42sp.org.br	60	 8.8.8.8
 ```
 
 ### monitoring

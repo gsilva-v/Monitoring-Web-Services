@@ -1,0 +1,5 @@
+usaremos o dig ou alguma lib parecida para fazer o dns
+
+dig @8.8.8.8 yahoo.com +timeout=1
+
+dig @8.8.8.8 yahoo.com +timeout=1 +nocomments +short

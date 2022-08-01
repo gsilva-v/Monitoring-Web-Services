@@ -4,7 +4,6 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <pthread.h>
 # include <string.h>
 # include <sys/time.h>
 # include <sys/types.h>
@@ -41,7 +40,11 @@ typedef struct monitoring_dns {
 	char	*url;
 	char	*server;
 	int		pause;
+	char	*dns_server;
+	char	*query;
 	long	last_monitoring;
+	bool	last_request_status;
+	float	latency;
 } DNS_Monitoring;
 
 typedef struct log {
@@ -70,11 +73,15 @@ void	http_manager(HTTP_Monitoring **monitor);
 PING_Monitoring **parse_ping(char *file_conf);
 void	ping_manager(PING_Monitoring **monitor);
 
+DNS_Monitoring **parse_dns(char *file_conf);
+void	dns_manager(DNS_Monitoring **monitor);
+
 /* UTIL */
 char	**split(char *s, char c);
 char	*strjoin(const char *s1, const char *s2);
 int		check_ber(char *what_map, char *extension);
 int		matrix_len(char **m);
 void	free_matrix(char **m);
+char	*strtrim(char const *s1, char const *set);
 
 #endif // MONITORING_H

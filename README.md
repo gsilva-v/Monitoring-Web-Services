@@ -35,6 +35,7 @@ Siga os proximos passos para fazer uso da ferramenta:
 Antes, você deve garantir que as bibliotecas necessárias estão instaladas no seu ambiente:
 
 - [Libcurl](https://curl.se/libcurl/)
+- [CAres](https://c-ares.org/)
 
 Em seu terminal, clone este repositório:
 ```bash

@@ -17,11 +17,11 @@ PATH_UTIL = $(PATH_SRCS)util/
 PATH_OBJS = ./objs/
 
 SRCS = 	$(PATH_MAIN)main.c $(PATH_MAIN)run.c \
-		$(PATH_HD)http_handler.c $(PATH_HD)ping_handler.c \
-		$(PATH_PC)parse_http.c $(PATH_PC)parse_ping.c \
+		$(PATH_HD)http_handler.c $(PATH_HD)ping_handler.c $(PATH_HD)dns_handler.c \
+		$(PATH_PC)parse_http.c $(PATH_PC)parse_ping.c $(PATH_PC)parse_dns.c \
 		$(PATH_TIME)time.c $(PATH_TIME)get_time_stamp.c \
 		$(PATH_UTIL)split.c $(PATH_UTIL)strjoin.c $(PATH_UTIL)free_matrix.c \
-		$(PATH_UTIL)matrix_len.c $(PATH_UTIL)parse_argv.c
+		$(PATH_UTIL)matrix_len.c $(PATH_UTIL)parse_argv.c $(PATH_UTIL)strtrim.c 
 
 OBJS = $(patsubst $(PATH_SRCS)%.c, $(PATH_OBJS)%.o, $(SRCS))
 

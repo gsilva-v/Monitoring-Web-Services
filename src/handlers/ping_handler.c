@@ -16,14 +16,16 @@ void	ping_manager(PING_Monitoring **monitor){
 
 	if (has_awake(monitor) || first == 1)
 		printf("Ping routine started: checking necessary requests ...\n");
+	else
+		return ;
 	for (int i = 0; monitor[i]; i++){
 		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
 			ping_handler(monitor[i]);
 			monitor[i]->last_monitoring = current_time();
-			if (monitor[i + 1] == NULL)
-				printf(FROUTINE);
+			// if (monitor[i + 1] == NULL)
 		}
 	}
+				printf(FROUTINE);
 	first = 0;
 }
 
