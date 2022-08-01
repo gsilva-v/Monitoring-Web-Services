@@ -27,19 +27,6 @@ static bool has_awake(DNS_Monitoring **monitor){
 	return false;
 }
 
-static void	show_log(DNS_Monitoring *monitor){
-	char	*stamp = get_time_stamp();
-
-	printf(MONITORED, stamp, monitor->name);
-	printf(STATUSWD, (monitor->last_request_status == true ? OK : KOE));
-	if (!conf.simplified)
-		dprintf(conf.log_fd, DLOG, stamp, monitor->name, monitor->url, monitor->protocol, \
-			(monitor->last_request_status == true ? SUCCESS : FAILED), monitor->latency);
-	else 
-		dprintf(conf.log_fd, DLOGS, stamp, monitor->name, monitor->protocol, \
-			(monitor->last_request_status == true ? SUCCESS : KO));
-}
-
 static void	dns_handler(DNS_Monitoring *monitor){
 	int		fd = open("./logs/dns.log", O_CREAT | O_TRUNC | O_RDWR , 0777);
 	int		_stdout = dup(STDOUT_FILENO);
@@ -55,7 +42,7 @@ static void	dns_handler(DNS_Monitoring *monitor){
 	if (ret != 0)
 		monitor->last_request_status = false;
 	monitor->latency = (finish_time - init_time) / 10.0f; 
-	show_log(monitor);
+	show_log_dns(monitor);
 	close(fd);
 	unlink("./logs/dns.log");
 }

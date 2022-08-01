@@ -1,6 +1,6 @@
 intra	HTTP	intra.42.fr	GET	301	15
 google	HTTP	google.com	GET	301	20
-yahoo	DNS	yahoo.com	20	8.8.8.8
-google	DNS	google.com	30	8.8.8.8
-game ping test	PING	game.42sp.org.br	20
-workspaces monitoring	PING	workspaces.42sp.org.br	15
+yahoo	DNS	yahoo.com	4	8.8.8.8
+google	DNS	google.com	3	8.8.8.8
+game ping test	PING	game.42sp.org.br	4
+workspaces monitoring	PING	workspaces.42sp.org.br	6

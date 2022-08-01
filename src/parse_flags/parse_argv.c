@@ -30,7 +30,9 @@ void	check_flags(char **args){
 				conf.dns = true;
 			else 
 				goto stop;
-		} else if (strstr(args[i], "-"))
+		} else if (strstr(args[i], PRETTY))
+			conf.pretty = true;
+		else if (strstr(args[i], "-"))
 			goto stop;
 	}
 	return ;
@@ -47,6 +49,7 @@ char	*find_conf(char **args){
 
 static	void initialize_conf(void){
 	conf.simplified = false;
+	conf.pretty = false;
 	conf.http = true;
 	conf.ping = true;
 	conf.dns = true;

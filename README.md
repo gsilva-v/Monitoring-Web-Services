@@ -79,8 +79,12 @@ Após a compilação e criação do seu arquivo de configuração, execute em se
 O programa deve começar a ser executado logo em seguida, mostrando os status dos monitorados.
 
 Também podemos usar com flags: 
- - `--simplify` irá simplificar o log gerado.
+ - `--simplify ou -s` irá simplificar o log gerado.
+ - `--pretty` irá deixar o log com uma aparencia mais agradável.
  - `--help` irá mostrar como passar os argumentos corretamente para a execução.
+ - `--http=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo HTTP
+ - `--ping=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo PING
+ - `--dns=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo DNS
 
 #
 # Resultados

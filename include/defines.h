@@ -4,29 +4,60 @@
 /*General Macros*/ 
 # define SUCCESS "OK Success"
 # define FAILED "KO The service didn't respond as expected, something might be broken"
-# define MONITORED "%s Monitored: \033[33m%s\n"
+# define MONITORED "%s\nMonitored: \033[33m%s\n"
 # define STATUS "\033[0mStatus: %s %d\033[0m\n\n"
 # define STATUSWD "\033[0mStatus: %s\033[0m\n\n"
 # define OK "\033[32mOK"
 # define KO "KO"
 # define KOE "\033[31mKO expected "
 # define FROUTINE "Finish routine\n-----------------------------------------------------\n"
+# define FAIL "Some error happened, see \'errors.log\' for more information\n"
+# define DIVL "===========================\n"
 
 /*Ping Macros*/ 
 # define PINGR "Ping routine started: checking necessary requests ...\n"
 # define PING "\033[0mPing: %.1f ms\033[0m\n\n"
-# define PLOG "%s Monitored: %s -> Url: %s; Ping : %.1f ms\n"
-# define PLOGS "%s Monitored: %s -> Ping : %.1f ms\n"
+# define PLOGOK "%s; Monitored: %s; Url: %s; Protocol: %s; Ping : %.1f;\n"
+# define PLOGKO "%s; Monitored: %s; Protocol: %s; Failed to resolve Ping with this service\n"
+# define PLOGSOK "%s; Monitored: %s; Ping : %.1f;\n"
+# define PLOGSKO "%s; Monitored: %s; Protocol: %s; Ping : Failed;\n"
+// Pretty
+# define PPLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\n"
+# define PPLOGKO "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\nFailed to resolve Ping with this service\n"
+# define PPLOGSOK "Date: %s\nMonitored: %s\nPing : %.1f ms\n"
+# define PPLOGSKO "Date: %s\nMonitored: %s\nProtocol: %s\nFailed to resolve Ping with this service\n" 
 
 /*HTTP Macros*/ 
 # define HTTPR "HTTP routine started: checking necessary requests ...\n"
-# define HLOG "%s Monitored: %s -> Url: %s; Protocol: %s; Expected Status: %d; Working : %s; Ping: %.1f ms\n"
+# define HLOG "%s Monitored: %s -> Url: %s; Protocol: %s; Expected Status: %d; Returned Status: %d; Working : %s; Ping: %.1f ms\n"
+# define HLOGKO "%s; Monitored: %s; Url: %s; Protocol: %s; \
+Expected Status: %d; Returned Status: %d; Working : %s; \
+Check the address of service and try again; Ping: %.1f ms;"
+# define HLOGOK "%s; Monitored: %s; Url: %s; Protocol: %s; \
+Expected Status: %d; Returned Status: %d; Working : %s; Ping: %.1f ms;"
 # define HLOGS "%s Monitored: %s -> Protocol: %s; Working : %s\n"
+// Pretty
+# define PHLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\n\
+Expected Status: %d\nReturned Status: %d\nWorking : %s; \nPing: %.1f ms\n"
+# define PHLOGKO "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\n\
+Expected Status: %d\nReturned Status: %d\nWorking : %s; \
+Check the address of service and try again\nPing: %.1f ms\n"
+# define PHLOGS "Date: %s\nMonitored: %s\nProtocol: %s\nWorking : %s\n"
 
 /*DNS Macros*/ 
 # define DNSR "DNS routine started: checking necessary requests ...\n"
-# define DLOG "%s Monitored: %s -> Url: %s; Protocol: %s; Working : %s; Ping: %.1f ms\n"
-# define DLOGS "%s Monitored: %s -> Protocol: %s; Working : %s\n"
+# define DLOGOK "%s Monitored: %s -> Url: %s; Protocol: %s; Working : OK; Ping: %.1f ms\n"
+# define DLOGKO "%s Monitored: %s -> Url: %s; Protocol: %s; Working : KO Service not found in DNS server \'%s\'; Ping: Fail ms\n"
+# define DLOGSOK "%s Monitored: %s -> Protocol: %s; Working : OK;\n"
+# define DLOGSKO "%s Monitored: %s -> Protocol: %s; Working : KO\n"
+// Pretty
+# define PDLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nWorking : OK\nPing: %.1f ms\n"
+# define PDLOGKO "Date: %s Monitored: %s\nUrl: %s\nProtocol: %s\nWorking : Service not found in DNS server \'%s\'\nPing: Fail ms\n"
+# define PDLOGSOK "Date: %s Monitored: %s\nProtocol: %s\nWorking : OK\n"
+# define PDLOGSKO "Date: %s Monitored: %s\nProtocol: %s\nWorking : KO\n"
+
+
+
 # define FDNSH "Failed in DNS Handler\n"
 # define DNSFLAGS " +timeout=1 +nocomments +short"
 
@@ -42,6 +73,7 @@
 /*Flags Macros*/ 
 # define HELP "Web Monitor: use ./monitoring [file config] [flags]\nAccepted flags: \n\
 --simplify | -s: will simplify the generated log.\n\
+--pretty : change the layout of log, make this beautiful\n\
 --http=[yes/no] : toogle http monitoriment. Default is yes.\n\
 --ping=[yes/no] : toogle ping monitoriment. Default is yes.\n\
 --dns=[yes/no] : toogle dns monitoriment. Default is yes.\n\n"
@@ -58,6 +90,7 @@
 # define FDNSON "--dns=yes"
 # define FDNSOFF "--dns=no"
 # define DBEXT ".db"
+# define PRETTY "--pretty"
 
 
 #endif // DEFINES_H

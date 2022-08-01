@@ -43,19 +43,6 @@ static CURL *set_options_curl(CURL *curl , HTTP_Monitoring *monitor){
 	return curl;
 }
 
-static void	show_log(HTTP_Monitoring *monitor){
-	char	*stamp = get_time_stamp();
-
-	printf(MONITORED, stamp, monitor->name);
-	printf(STATUS, (monitor->last_request_status == true ? OK : KOE), monitor->status);
-	if (!conf.simplified)
-		dprintf(conf.log_fd, HLOG, stamp,  monitor->name, monitor->url, monitor->protocol, monitor->status, \
-			(monitor->last_request_status == true ? SUCCESS : FAILED), monitor->latency);
-	else 
-		dprintf(conf.log_fd, HLOGS, stamp, monitor->name, monitor->protocol, \
-			(monitor->last_request_status == true ? SUCCESS : KO));
-}
-
 static void	http_handler(HTTP_Monitoring *monitor){
 	CURL	*curl = curl_easy_init();
 	long	http_status = 0, finish_time, init_time = current_time();
@@ -67,14 +54,14 @@ static void	http_handler(HTTP_Monitoring *monitor){
 		curl_easy_setopt(curl, CURLOPT_URL, url);
 		curl = set_options_curl(curl, monitor);
 		if(curl_easy_perform(curl) != CURLE_OK){
-			fprintf(stderr, "curl_easy_perform() failed: %s\n",
+			printf("HTTP Monitor failed: %s\n",
 					curl_easy_strerror(CURLE_COULDNT_CONNECT));
 		}
 		finish_time = current_time();
 		curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_status);
 		monitor->last_request_status = (http_status == monitor->status) ? true : false;
 		monitor->latency = (finish_time - init_time) / 10.0f; 
-		show_log(monitor);
+		show_log_http(monitor, http_status);
 		curl_easy_cleanup(curl);
 	}
 }

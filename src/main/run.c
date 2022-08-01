@@ -5,7 +5,8 @@ void	run(char *file_conf){
 	PING_Monitoring	**ping = parse_ping(file_conf);
 	DNS_Monitoring	**dns = parse_dns(file_conf);
 
-	conf.log_fd = open("./logs/file.log", O_CREAT| O_RDWR | O_APPEND, 0777);
+	conf.log_fd = open("./logs/success.log", O_CREAT| O_RDWR | O_APPEND, 0777);
+	conf.error_log_fd = open("./logs/errors.log", O_CREAT | O_APPEND | O_RDWR, 0777);
 	if (conf.log_fd < 0)
 			error_exit(LOGFAIL, 1);
 	while (true){

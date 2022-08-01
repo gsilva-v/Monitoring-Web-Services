@@ -33,17 +33,6 @@ static size_t silent_curl(char *ptr, size_t size, size_t nmemb, void *userdata){
 	return size * nmemb;
 }
 
-static void	show_log(PING_Monitoring *monitor){
-	char	*stamp = get_time_stamp();
-
-	printf(MONITORED, stamp, monitor->name);
-	printf(PING, monitor->latency);
-	if (!conf.simplified)
-		dprintf(conf.log_fd, PLOG, stamp, monitor->name, monitor->url, monitor->latency);
-	else
-		dprintf(conf.log_fd, PLOGS, stamp, monitor->name, monitor->latency);
-}
-
 static void	ping_handler(PING_Monitoring *monitor){
 	CURL	*curl = curl_easy_init();
 	long	finish_time, init_time = current_time();
@@ -56,11 +45,13 @@ static void	ping_handler(PING_Monitoring *monitor){
 		if(curl_easy_perform(curl) != CURLE_OK){
 			printf("Ping: Name or service not know\n");
 			monitor->latency = 0;
+			monitor->last_request_status = false;
 			goto showlog;
 		}
+		monitor->last_request_status = true;
 		finish_time = current_time();
 		curl_easy_cleanup(curl);
 	}
 	monitor->latency = (finish_time - init_time) / 10.0f;
-	showlog : show_log(monitor);
+	showlog : show_log_ping(monitor);
 }
