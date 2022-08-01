@@ -1,5 +1,38 @@
 #include "monitoring.h"
 
+static int	count_ping(char *file_conf);
+static PING_Monitoring *set_config(char **conf);
+static bool	check_line(char **line);
+
+PING_Monitoring **parse_ping(char *file_conf){
+	char *buffer = NULL;
+	char **conf = NULL; 
+	int ping_counter = 0, i = 0;
+	size_t buffer_size = 0;
+	PING_Monitoring **ret = calloc(count_ping(file_conf), \
+		sizeof(PING_Monitoring));
+	FILE *fd = fopen(file_conf, "r");
+
+	if (fd < 0){
+		printf(INVCONF);
+		exit (1);
+	}
+	while (getline(&buffer, &buffer_size, fd) >= 0){
+		if (strstr(buffer, "PING")){
+			conf = split(buffer, '\t');	
+			if (check_line(conf) == false){
+				free_matrix(conf);
+				exit(1);
+			}
+			ret[i] = set_config(conf);
+			free_matrix(conf);
+			i++;
+		}
+	}
+	fclose(fd);
+	return ret;
+}
+
 static int	count_ping(char *file_conf){
 	char *buffer = NULL;
 	int ping_counter = 0;
@@ -36,33 +69,4 @@ static bool	check_line(char **line){
 		return false;
 	}	
 	return true;
-}
-
-PING_Monitoring **parse_ping(char *file_conf){
-	char *buffer = NULL;
-	char **conf = NULL; 
-	int ping_counter = 0, i = 0;
-	size_t buffer_size = 0;
-	PING_Monitoring **ret = calloc(count_ping(file_conf), \
-		sizeof(PING_Monitoring));
-	FILE *fd = fopen(file_conf, "r");
-
-	if (fd < 0){
-		printf(INVCONF);
-		exit (1);
-	}
-	while (getline(&buffer, &buffer_size, fd) >= 0){
-		if (strstr(buffer, "PING")){
-			conf = split(buffer, '\t');	
-			if (check_line(conf) == false){
-				free_matrix(conf);
-				exit(1);
-			}
-			ret[i] = set_config(conf);
-			free_matrix(conf);
-			i++;
-		}
-	}
-	fclose(fd);
-	return ret;
 }

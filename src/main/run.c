@@ -5,8 +5,8 @@ int run(char *file_conf){
 	PING_Monitoring **ping = parse_ping(file_conf);
 	DNS_Monitoring **dns = parse_dns(file_conf);
 
-	log_file.log_fd = open("./logs/file.log", O_CREAT| O_RDWR | O_APPEND, 0777);
-	if (log_file.log_fd < 0){
+	conf.log_fd = open("./logs/file.log", O_CREAT| O_RDWR | O_APPEND, 0777);
+	if (conf.log_fd < 0){
 		printf("Error: Can't open log file!\n");
 		exit(1);
 	}

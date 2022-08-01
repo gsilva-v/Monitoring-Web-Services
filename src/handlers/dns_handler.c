@@ -1,6 +1,23 @@
 #include "monitoring.h"
 
 static void	dns_handler(DNS_Monitoring *monitor);
+static bool has_awake(DNS_Monitoring **monitor);
+
+void	dns_manager(DNS_Monitoring **monitor){
+	static int first = 1;
+
+	if (!(has_awake(monitor) || first == 1))
+		return ;
+	printf("DNS routine started: checking necessary requests ...\n");
+	for (int i = 0; monitor[i]; i++){
+		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
+			dns_handler(monitor[i]);
+			monitor[i]->last_monitoring = current_time();
+		}
+	}
+	printf(FROUTINE);
+	first = 0;
+}
 
 static bool has_awake(DNS_Monitoring **monitor){
 	for (int i = 0; monitor[i]; i++){
@@ -16,33 +33,13 @@ static void	show_log(DNS_Monitoring *monitor){
 
 	printf(MONITORED, stamp, monitor->name);
 	printf("\033[0mStatus: %s\033[0m\n\n", (monitor->last_request_status == true ? OK : KOE));
-	if (!log_file.simplified){
-		dprintf(log_file.log_fd, DLOG, stamp, monitor->name, monitor->url, monitor->protocol,\
+	if (!conf.simplified){
+		dprintf(conf.log_fd, DLOG, stamp, monitor->name, monitor->url, monitor->protocol,\
 			(monitor->last_request_status == true ? SUCCESS : FAILED), monitor->latency);
 	} else {
-		dprintf(log_file.log_fd, DLOGS, stamp, monitor->name, monitor->protocol,\
+		dprintf(conf.log_fd, DLOGS, stamp, monitor->name, monitor->protocol,\
 			(monitor->last_request_status == true ? SUCCESS : KO));
 	}
-}
-
-void	dns_manager(DNS_Monitoring **monitor){
-	int	i = 0;
-	static int first = 1;
-
-	if (has_awake(monitor) || first == 1)
-		printf("DNS routine started: checking necessary requests ...\n");
-	else
-		return ;
-	while (monitor[i]){
-		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
-			dns_handler(monitor[i]);
-			monitor[i]->last_monitoring = current_time();
-			// if (monitor[i + 1] == NULL)
-		}
-		i++;
-	}
-				printf(FROUTINE);
-	first = 0;
 }
 
 static void	dns_handler(DNS_Monitoring *monitor){

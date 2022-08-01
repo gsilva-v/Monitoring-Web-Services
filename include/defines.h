@@ -15,7 +15,7 @@
 # define OK "\033[32mOK"
 # define KO "KO"
 # define KOE "\033[31mKO expected "
-# define FROUTINE "Finish routine\n--------------------------------\n"
+# define FROUTINE "Finish routine\n-----------------------------------------------------\n"
 # define INVCONF "Invalid config file, Try Another!\n"
 # define INVTABS "Error: Columns must be separeted by tabs\n"
 # define MISSARG "Need one config file: conf/monitoring.db"

@@ -23,7 +23,6 @@ Os monitores HTTP e HTTPS verificam a disponibilidade e o tempo de resposta dos 
 ### Funcionamento por PING :
 Uma verificação de ping é uma verificação básica de nível de rede. O ping usa o protocolo ICMP para verificar a acessibilidade da rede do site/dispositivo de rede que você está verificando. Isso informa que o dispositivo está disponível e conectado à interface de rede. No entanto, apenas porque algo retorna um ping, não é certo que o serviço no dispositivo esteja em execução, mas ajuda na solução de problemas. Então, definitivamente, uma das principais verificações a serem usadas.
 
-
 ### Funcionamento por DNS :
 O monitor DNS usa o serviço DNS (Domain Name System) para localizar informações sobre um ou mais hosts.
 
@@ -35,7 +34,6 @@ Siga os proximos passos para fazer uso da ferramenta:
 Antes, você deve garantir que as bibliotecas necessárias estão instaladas no seu ambiente:
 
 - [Libcurl](https://curl.se/libcurl/)
-- [CAres](https://c-ares.org/)
 
 Em seu terminal, clone este repositório:
 ```bash
@@ -55,13 +53,23 @@ Esse arquivo de configuração deve seguir os seguintes padrões:
 
 - Os itens da linha devem estar em ordem (apelido do serviço, protocólo, endereço) e separados por tabulações entre eles.
 	
-	- Para monitoramento por protocólo HTTP, deve-se colocar mais 3 configurações: Método HTTP, status de response esperado e intervalo entre os testes (em segundos). Também separados por tabulações
+	- Para monitoramento por protocólo HTTP, deve-se colocar mais 3 configurações: Método HTTP, status de response esperado e intervalo entre os testes (em segundos). Também separados por tabulações.
 
-	- Para monitoramento por PING, deve-se colocar apenas o intervalo ao final da linha
+	- Para monitoramento por PING, deve-se colocar apenas o intervalo ao final da linha.
+
+	- Para monitoramento po DNS deve-se colocar o intervalo e o servidor DNS no final da linha.
+
 
 Exemplo de linha de configuração: 
 ```bash 
+HTTP :
 intra	HTTP	intra.42.fr	GET	301	10
+
+PING :
+game ping test	PING	game.42sp.org.br	20
+
+DNS :
+google	DNS	google.com	30	8.8.8.8
 ```
 
 ## Como usar a ferramenta

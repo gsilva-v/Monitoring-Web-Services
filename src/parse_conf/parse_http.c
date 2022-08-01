@@ -1,5 +1,38 @@
 #include "monitoring.h"
 
+static int	count_http(char *file_conf);
+static HTTP_Monitoring *set_config(char **conf);
+static bool	check_line(char **line);
+
+HTTP_Monitoring **parse_http(char *file_conf){
+	char *buffer = NULL;
+	char **conf = NULL; 
+	int http_counter = 0, i = 0;
+	size_t buffer_size = 0;
+	HTTP_Monitoring **ret = calloc(count_http(file_conf), \
+		sizeof(HTTP_Monitoring));
+	FILE *fd = fopen(file_conf, "r");
+
+	if (fd < 0){
+		printf(INVCONF);
+		exit (1);
+	}
+	while (getline(&buffer, &buffer_size, fd) >= 0){
+		if (strstr(buffer, "HTTP")){
+			conf = split(buffer, '\t');	
+			if (check_line(conf) == false){
+				free_matrix(conf);
+				exit(1);
+			}
+			ret[i] = set_config(conf);
+			free_matrix(conf);
+			i++;
+		}
+	}
+	fclose(fd);
+	return ret;
+}
+
 static int	count_http(char *file_conf){
 	char *buffer = NULL;
 	int http_counter = 0;
@@ -38,33 +71,4 @@ static bool	check_line(char **line){
 		return false;
 	}	
 	return true;
-}
-
-HTTP_Monitoring **parse_http(char *file_conf){
-	char *buffer = NULL;
-	char **conf = NULL; 
-	int http_counter = 0, i = 0;
-	size_t buffer_size = 0;
-	HTTP_Monitoring **ret = calloc(count_http(file_conf), \
-		sizeof(HTTP_Monitoring));
-	FILE *fd = fopen(file_conf, "r");
-
-	if (fd < 0){
-		printf(INVCONF);
-		exit (1);
-	}
-	while (getline(&buffer, &buffer_size, fd) >= 0){
-		if (strstr(buffer, "HTTP")){
-			conf = split(buffer, '\t');	
-			if (check_line(conf) == false){
-				free_matrix(conf);
-				exit(1);
-			}
-			ret[i] = set_config(conf);
-			free_matrix(conf);
-			i++;
-		}
-	}
-	fclose(fd);
-	return ret;
 }
