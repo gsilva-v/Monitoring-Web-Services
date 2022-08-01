@@ -5,24 +5,22 @@ static HTTP_Monitoring *set_config(char **conf);
 static bool	check_line(char **line);
 
 HTTP_Monitoring **parse_http(char *file_conf){
-	char *buffer = NULL;
-	char **conf = NULL; 
-	int http_counter = 0, i = 0;
-	size_t buffer_size = 0;
-	HTTP_Monitoring **ret = calloc(count_http(file_conf), \
+	char			*buffer = NULL;
+	char			**conf = NULL; 
+	int				i = 0;
+	size_t			buffer_size = 0;
+	HTTP_Monitoring	**ret = calloc(count_http(file_conf), \
 		sizeof(HTTP_Monitoring));
-	FILE *fd = fopen(file_conf, "r");
+	FILE			*fd = fopen(file_conf, "r");
 
-	if (fd < 0){
-		printf(INVCONF);
-		exit (1);
-	}
+	if (fd == NULL)
+		error_exit(INVCONF, 1);
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "HTTP")){
 			conf = split(buffer, '\t');	
 			if (check_line(conf) == false){
 				free_matrix(conf);
-				exit(1);
+				error_exit(INVTABS, 1);
 			}
 			ret[i] = set_config(conf);
 			free_matrix(conf);
@@ -34,26 +32,23 @@ HTTP_Monitoring **parse_http(char *file_conf){
 }
 
 static int	count_http(char *file_conf){
-	char *buffer = NULL;
-	int http_counter = 0;
-	size_t buffer_size = 0;
-	FILE *fd = fopen(file_conf, "r");
+	char	*buffer = NULL;
+	int		http_counter = 0;
+	size_t	buffer_size = 0;
+	FILE	*fd = fopen(file_conf, "r");
 
-	if (fd < 0){
-		printf(INVCONF);
-		exit (1);
-	}
+	if (fd == NULL)
+		error_exit(INVCONF, 1);
 	while (getline(&buffer, &buffer_size, fd) >= 0){
-		if (strstr(buffer, "HTTP")){
+		if (strstr(buffer, "HTTP"))
 			http_counter++;
-		}
 	}
 	fclose(fd);
 	return (http_counter);
 }
 
 static HTTP_Monitoring *set_config(char **conf){
-	HTTP_Monitoring *ret = calloc(1, sizeof(HTTP_Monitoring));
+	HTTP_Monitoring	*ret = calloc(1, sizeof(HTTP_Monitoring));
 
 	ret->name = strdup(conf[0]);
 	ret->protocol = strdup(conf[1]);
@@ -66,9 +61,7 @@ static HTTP_Monitoring *set_config(char **conf){
 }
 
 static bool	check_line(char **line){
-	if (matrix_len(line) != 6){
-		printf(INVTABS);
+	if (matrix_len(line) != 6)
 		return false;
-	}	
 	return true;
 }

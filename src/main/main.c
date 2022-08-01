@@ -8,7 +8,7 @@ int	main(int argc, char **argv){
 		exit(1);
 	}
 	check_flags(argv);
-	char *conf_file = find_conf(argv);
+	char	*conf_file = find_conf(argv);
 	if (conf_file)
 		run(conf_file);
 	else

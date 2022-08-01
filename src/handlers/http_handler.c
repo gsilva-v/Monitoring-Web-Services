@@ -4,11 +4,11 @@ static void	http_handler(HTTP_Monitoring *monitor);
 static bool has_awake(HTTP_Monitoring **monitor);
 
 void	http_manager(HTTP_Monitoring **monitor){
-	static int first = 1;
+	static int	first = 1;
 
 	if (!(has_awake(monitor) || first == 1))
 		return ;
-	printf("HTTP routine started: checking necessary requests ...\n");
+	printf(HTTPR);
 	for(int i = 0; monitor[i]; i++){
 		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
 			http_handler(monitor[i]);
@@ -21,19 +21,20 @@ void	http_manager(HTTP_Monitoring **monitor){
 
 static bool has_awake(HTTP_Monitoring **monitor){
 	for (int i = 0; monitor[i]; i++){
-		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 ){
+		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000)
 			return true;
-		}
 	}
 	return false;
 }
 
-static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
-    return size * nmemb;
+static size_t silent_curl(char *ptr, size_t size, size_t nmemb, void *userdata){
+    (void)ptr;
+    (void)userdata;
+	return size * nmemb;
 }
 
 static CURL *set_options_curl(CURL *curl , HTTP_Monitoring *monitor){
-	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, silent_curl);
 	curl_easy_setopt(curl, CURLOPT_WRITEDATA, NULL);
 	if (!strcmp(monitor->method, "GET"))
 		curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
@@ -43,25 +44,24 @@ static CURL *set_options_curl(CURL *curl , HTTP_Monitoring *monitor){
 }
 
 static void	show_log(HTTP_Monitoring *monitor){
-	char *stamp = get_time_stamp();
+	char	*stamp = get_time_stamp();
 
 	printf(MONITORED, stamp, monitor->name);
 	printf(STATUS, (monitor->last_request_status == true ? OK : KOE), monitor->status);
-	if (!conf.simplified){
+	if (!conf.simplified)
 		dprintf(conf.log_fd, HLOG, stamp,  monitor->name, monitor->url, monitor->protocol, monitor->status, \
 			(monitor->last_request_status == true ? SUCCESS : FAILED), monitor->latency);
-	} else {
-		dprintf(conf.log_fd, HLOGS, stamp, monitor->name, monitor->protocol,\
+	else 
+		dprintf(conf.log_fd, HLOGS, stamp, monitor->name, monitor->protocol, \
 			(monitor->last_request_status == true ? SUCCESS : KO));
-	}
 }
 
 static void	http_handler(HTTP_Monitoring *monitor){
-	CURL *curl = curl_easy_init();
-	long http_status = 0, finish_time, init_time = current_time();
+	CURL	*curl = curl_easy_init();
+	long	http_status = 0, finish_time, init_time = current_time();
 
 	if (curl){ 
-		char *url = !strstr(monitor->url, "http://") ? \
+		char	*url = !strstr(monitor->url, "http://") ? \
 		strjoin(strdup("http://"), monitor->url) : strdup(monitor->url); 
 	
 		curl_easy_setopt(curl, CURLOPT_URL, url);

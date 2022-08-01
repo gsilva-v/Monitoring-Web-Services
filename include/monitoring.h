@@ -67,7 +67,7 @@ long			passed_time(long time_started);
 char			*get_time_stamp(void);
 
 /* EXEC */
-int				run(char *file_conf);
+void			run(char *file_conf);
 
 /* HTTP */
 HTTP_Monitoring	**parse_http(char *file_conf);
@@ -88,5 +88,6 @@ int				check_ber(char *what_map, char *extension);
 int				matrix_len(char **m);
 void			free_matrix(char **m);
 char			*strtrim(char *s1, char const *set);
+void			error_exit(char *s, int status);
 
 #endif // MONITORING_H

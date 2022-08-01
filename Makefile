@@ -2,7 +2,7 @@ NAME = monitoring
 
 CC = gcc
 INCLUDE = -I ./include/
-CFLAGS = -g $(INCLUDE) # -Wall -Werror -Wextra
+CFLAGS = -g $(INCLUDE) -Wall -Werror -Wextra
 CURLFLAGS = -lcurl -lbsd
 RM = rm -rf
 
@@ -10,18 +10,19 @@ PATH_SRCS = ./src/
 PATH_MAIN = $(PATH_SRCS)main/
 PATH_HD = $(PATH_SRCS)handlers/
 PATH_PC = $(PATH_SRCS)parse_conf/
+PATH_FL = $(PATH_SRCS)parse_flags/
 PATH_TIME = $(PATH_SRCS)time/
 PATH_UTIL = $(PATH_SRCS)util/
-
 
 PATH_OBJS = ./objs/
 
 SRCS = 	$(PATH_MAIN)main.c $(PATH_MAIN)run.c \
 		$(PATH_HD)http_handler.c $(PATH_HD)ping_handler.c $(PATH_HD)dns_handler.c \
 		$(PATH_PC)parse_http.c $(PATH_PC)parse_ping.c $(PATH_PC)parse_dns.c \
+		$(PATH_FL)parse_argv.c \
 		$(PATH_TIME)time.c $(PATH_TIME)get_time_stamp.c \
 		$(PATH_UTIL)split.c $(PATH_UTIL)strjoin.c $(PATH_UTIL)free_matrix.c \
-		$(PATH_UTIL)matrix_len.c $(PATH_UTIL)parse_argv.c $(PATH_UTIL)strtrim.c 
+		$(PATH_UTIL)matrix_len.c $(PATH_UTIL)strtrim.c $(PATH_UTIL)error_exit.c
 
 OBJS = $(patsubst $(PATH_SRCS)%.c, $(PATH_OBJS)%.o, $(SRCS))
 
@@ -39,6 +40,7 @@ $(PATH_OBJS)%.o: $(PATH_SRCS)%.c
 	@mkdir -p $(PATH_OBJS)main/
 	@mkdir -p $(PATH_OBJS)handlers/
 	@mkdir -p $(PATH_OBJS)parse_conf/
+	@mkdir -p $(PATH_OBJS)parse_flags/
 	@mkdir -p $(PATH_OBJS)time/
 	@mkdir -p $(PATH_OBJS)util/
 	$(CC) $(CFLAGS) -c $< -o $@ $(CURLFLAGS)

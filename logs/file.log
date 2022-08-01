@@ -1,0 +1,25 @@
+[14:6:22 1/8/2022]  Monitored: 42insta -> Url: instagram.com/42saopaulo/; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 1.7 ms
+[14:6:23 1/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 6.4 ms
+[14:6:23 1/8/2022]  Monitored: game ping test -> Url: game.42sp.org.br; Ping : 2.0 ms
+[14:6:23 1/8/2022]  Monitored: workspaces monitoring -> Url: workspaces.42sp.org.br; Ping : 2.0 ms
+[14:6:23 1/8/2022]  Monitored: yahoo -> Url: yahoo.com; Protocol: DNS; Working : OK Success; Ping: 1.7 ms
+[14:6:23 1/8/2022]  Monitored: google -> Url: google.com; Protocol: DNS; Working : OK Success; Ping: 1.4 ms
+[14:6:37 1/8/2022]  Monitored: 42insta -> Url: instagram.com/42saopaulo/; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 0.9 ms
+[14:6:38 1/8/2022]  Monitored: workspaces monitoring -> Url: workspaces.42sp.org.br; Ping : 1.5 ms
+[14:6:43 1/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 6.4 ms
+[14:6:43 1/8/2022]  Monitored: game ping test -> Url: game.42sp.org.br; Ping : 1.4 ms
+[14:6:43 1/8/2022]  Monitored: yahoo -> Url: yahoo.com; Protocol: DNS; Working : OK Success; Ping: 1.1 ms
+[14:6:52 1/8/2022]  Monitored: 42insta -> Url: instagram.com/42saopaulo/; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 0.9 ms
+[14:6:53 1/8/2022]  Monitored: workspaces monitoring -> Url: workspaces.42sp.org.br; Ping : 1.7 ms
+[14:6:53 1/8/2022]  Monitored: google -> Url: google.com; Protocol: DNS; Working : OK Success; Ping: 1.3 ms
+[14:7:3 1/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 6.1 ms
+[14:7:3 1/8/2022]  Monitored: game ping test -> Url: game.42sp.org.br; Ping : 1.3 ms
+[14:7:3 1/8/2022]  Monitored: yahoo -> Url: yahoo.com; Protocol: DNS; Working : OK Success; Ping: 1.2 ms
+[14:7:8 1/8/2022]  Monitored: 42insta -> Url: instagram.com/42saopaulo/; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 1.3 ms
+[14:7:8 1/8/2022]  Monitored: workspaces monitoring -> Url: workspaces.42sp.org.br; Ping : 1.6 ms
+[14:7:23 1/8/2022]  Monitored: 42insta -> Url: instagram.com/42saopaulo/; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 0.9 ms
+[14:7:23 1/8/2022]  Monitored: google -> Url: google.com; Protocol: DNS; Working : OK Success; Ping: 1.3 ms
+[14:7:23 1/8/2022]  Monitored: workspaces monitoring -> Url: workspaces.42sp.org.br; Ping : 1.5 ms
+[14:7:23 1/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Working : OK Success; Ping: 6.4 ms
+[14:7:23 1/8/2022]  Monitored: game ping test -> Url: game.42sp.org.br; Ping : 1.5 ms
+[14:7:23 1/8/2022]  Monitored: yahoo -> Url: yahoo.com; Protocol: DNS; Working : OK Success; Ping: 1.2 ms
