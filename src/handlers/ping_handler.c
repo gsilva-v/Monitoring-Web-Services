@@ -3,11 +3,11 @@
 static void	ping_handler(PING_Monitoring *monitor);
 static bool	has_awake(PING_Monitoring **monitor);
 
-void	ping_manager(PING_Monitoring **monitor){
+int	ping_manager(PING_Monitoring **monitor){
 	static int	first = 1;
 
 	if (!(has_awake(monitor) || first == 1))
-		return ;
+		return 0;
 	printf(PINGR);
 	for (int i = 0; monitor[i]; i++){
 		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
@@ -17,6 +17,7 @@ void	ping_manager(PING_Monitoring **monitor){
 	}
 	printf(FROUTINE);
 	first = 0;
+	return 1;
 }
 
 static bool has_awake(PING_Monitoring **monitor){

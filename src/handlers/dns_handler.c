@@ -3,11 +3,11 @@
 static void	dns_handler(DNS_Monitoring *monitor);
 static bool has_awake(DNS_Monitoring **monitor);
 
-void	dns_manager(DNS_Monitoring **monitor){
+int	dns_manager(DNS_Monitoring **monitor){
 	static int	first = 1;
 
 	if (!(has_awake(monitor) || first == 1))
-		return ;
+		return 0;
 	printf(DNSR);
 	for (int i = 0; monitor[i]; i++){
 		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
@@ -17,6 +17,7 @@ void	dns_manager(DNS_Monitoring **monitor){
 	}
 	printf(FROUTINE);
 	first = 0;
+	return 1;
 }
 
 static bool has_awake(DNS_Monitoring **monitor){

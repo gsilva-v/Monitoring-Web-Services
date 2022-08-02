@@ -3,11 +3,11 @@
 static void	http_handler(HTTP_Monitoring *monitor);
 static bool has_awake(HTTP_Monitoring **monitor);
 
-void	http_manager(HTTP_Monitoring **monitor){
+int	http_manager(HTTP_Monitoring **monitor){
 	static int	first = 1;
 
 	if (!(has_awake(monitor) || first == 1))
-		return ;
+		return 0;
 	printf(HTTPR);
 	for(int i = 0; monitor[i]; i++){
 		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000 || first == 1){
@@ -17,6 +17,7 @@ void	http_manager(HTTP_Monitoring **monitor){
 	}
 	printf(FROUTINE);
 	first = 0;
+	return 1;
 }
 
 static bool has_awake(HTTP_Monitoring **monitor){

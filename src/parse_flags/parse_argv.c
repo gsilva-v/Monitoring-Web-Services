@@ -87,6 +87,8 @@ void	check_flags(char **args){
 			continue ;
 		protocol_checker(args[i]);
 	}
+	if (conf.ping == false && conf.http == false && conf.dns == false)
+		error_exit(WITHOUTPROTOCOL, 6);
 }
 
 char	*find_conf(char **args){

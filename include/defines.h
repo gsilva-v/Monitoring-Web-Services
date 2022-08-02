@@ -69,6 +69,7 @@ Service not found in DNS server \'%s\'\nPing: Fail ms\n"
 # define INVTABS "Error: Columns must be separeted by tabs\n"
 # define MISSARG "Need one config file: conf/monitoring.db\n"
 # define LOGFAIL "Can't open log file\n"
+# define WITHOUTPROTOCOL "For what you want use me without any protocol???"
 
 /*Flags Macros*/ 
 # define HELP "Web Monitor: use ./monitoring [file config] [flags]\nAccepted flags: \n\

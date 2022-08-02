@@ -1,5 +1,5 @@
-intra	HTTP	intra.42.fr	GET	301	15
-google	HTTP	google.com	GET	301	20
+intra	HTTP	intra.42.fr	GET	301	4
+google	HTTP	google.com	GET	301	1
 yahoo	DNS	yahoo.com	4	8.8.8.8
 google	DNS	google.com	3	8.8.8.8
 game ping test	PING	game.42sp.org.br	4

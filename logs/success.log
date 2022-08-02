@@ -9,3 +9,17 @@
 [15:42:39 2/8/2022]  Monitored: google invalid dns -> Url: google.com; Protocol: DNS; Working : OK; Ping: 36.4 ms
 [15:42:39 2/8/2022]  Monitored: youtube -> Url: youtube.com; Protocol: DNS; Working : OK; Ping: 6.9 ms
 [15:42:39 2/8/2022]  Monitored: google -> Url: google.com; Protocol: DNS; Working : OK; Ping: 2.1 ms
+[15:47:37 2/8/2022]  Monitored: intra -> Url: intra.42.fr; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 39.1 ms
+[15:47:37 2/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 6.7 ms
+[15:47:51 2/8/2022]  Monitored: intra -> Url: intra.42.fr; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 39.1 ms
+[15:47:51 2/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 6.3 ms
+[15:47:59 2/8/2022]  Monitored: intra -> Url: intra.42.fr; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 39.1 ms
+[15:47:59 2/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 6.5 ms
+[15:50:42 2/8/2022]  Monitored: intra -> Url: intra.42.fr; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 39.2 ms
+[15:50:42 2/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 6.4 ms
+[15:50:57 2/8/2022]  Monitored: intra -> Url: intra.42.fr; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 39.3 ms
+[15:51:13 2/8/2022]  Monitored: intra -> Url: intra.42.fr; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 39.1 ms
+[15:51:14 2/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 6.7 ms
+[15:51:15 2/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 6.2 ms
+[15:53:21 2/8/2022]  Monitored: intra -> Url: intra.42.fr; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 39.7 ms
+[15:53:21 2/8/2022]  Monitored: google -> Url: google.com; Protocol: HTTP; Expected Status: 301; Returned Status: 301; Working : [32mOK; Ping: 9.1 ms

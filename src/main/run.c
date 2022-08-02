@@ -8,13 +8,13 @@ void	run(char *file_conf){
 
 	while (true){
 		if (http && conf.http)
-			http_manager(http);
+			times += http_manager(http);
 		if (ping && conf.ping)
-			ping_manager(ping);
+			times += ping_manager(ping);
 		if (dns && conf.dns)
-			dns_manager(dns);
+			times += dns_manager(dns);
 		if (conf.times != 0 && times == conf.times)
 			break;
-		times++;
+
 	}
 }

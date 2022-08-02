@@ -75,17 +75,17 @@ void			run(char *file_conf);
 
 /* HTTP */
 HTTP_Monitoring	**parse_http(char *file_conf);
-void			http_manager(HTTP_Monitoring **monitor);
+int				http_manager(HTTP_Monitoring **monitor);
 void			show_log_http(HTTP_Monitoring *monitor, int status);
 
 /* PING */
 PING_Monitoring	**parse_ping(char *file_conf);
-void			ping_manager(PING_Monitoring **monitor);
+int				ping_manager(PING_Monitoring **monitor);
 void			show_log_ping(PING_Monitoring *monitor);
 
 /* DNS */
 DNS_Monitoring	**parse_dns(char *file_conf);
-void			dns_manager(DNS_Monitoring **monitor);
+int				dns_manager(DNS_Monitoring **monitor);
 void			show_log_dns(DNS_Monitoring *monitor);
 
 /* UTIL */
