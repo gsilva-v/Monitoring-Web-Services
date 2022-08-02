@@ -76,7 +76,8 @@ Service not found in DNS server \'%s\'\nPing: Fail ms\n"
 --pretty : change the layout of log, make this beautiful\n\
 --http=[yes/no] : toogle http monitoriment. Default is yes.\n\
 --ping=[yes/no] : toogle ping monitoriment. Default is yes.\n\
---dns=[yes/no] : toogle dns monitoriment. Default is yes.\n\n"
+--dns=[yes/no] : toogle dns monitoriment. Default is yes.\n\
+--times=[number of requests] : Control how many request for each config.\n\n"
 # define FS "-s"
 # define FSIMP "--simplify"
 # define FHELP "--help"

@@ -41,9 +41,16 @@ static bool	beautify_checker(char *flag){
 	return false;
 }
 
-static void	help_checker(char *flag){
+static bool help_checker(char *flag){
 	if (!strcmp(flag, FHELP))
 		error_exit(HELP, 1);
+	else if (strstr(flag, "--times=")){
+		char **times = split(flag, '=');
+		conf.times = atoi(times[1]);
+		free_matrix(times);
+		return true;
+	}
+	return false;
 }
 
 static void	protocol_checker(char *flag){
@@ -62,6 +69,7 @@ static void	protocol_checker(char *flag){
 
 static void initialize_conf(void){
 	conf.simplified = false;
+	conf.times = 0;
 	conf.pretty = false;
 	conf.http = true;
 	conf.ping = true;
@@ -75,9 +83,8 @@ static void initialize_conf(void){
 void	check_flags(char **args){
 	initialize_conf();
 	for(int i = 0; args[i]; i++){
-		if (beautify_checker(args[i]))
+		if (beautify_checker(args[i]) || help_checker(args[i]))
 			continue ;
-		help_checker(args[i]);
 		protocol_checker(args[i]);
 	}
 }

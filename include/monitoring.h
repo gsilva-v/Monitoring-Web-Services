@@ -50,6 +50,7 @@ typedef struct monitoring_dns {
 typedef struct conf {
 	int		log_fd;
 	int		error_log_fd;
+	int		times;
 	bool	simplified;
 	bool	pretty;
 	bool	dns;

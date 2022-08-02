@@ -12,6 +12,8 @@
 	- [Exemplo](#config2)
 - [Como Usar](#use)
 	- [Flags](#flags)
+- [Testes](#testes)
+	- [Como executar cada teste](#testes2)
 - [Log](#log)
 - [Possiveis melhorias](#melhorias)
 - [Bibliografia](#bibliografia)
@@ -124,13 +126,55 @@ Podemos usar com flags:
  - `--http=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo HTTP
  - `--ping=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo PING
  - `--dns=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo DNS
+ - `--times=[numero de requisições]` irá controlar a quantidade de vezes que fará a monitoração dos serviços, por padrão o programa continua funcionando eternamente.
+
 
 #
-# Resultados
+<p id = "testes"> </p>
+
+# Testes
+Na pasta testes, contém alguns scripts para testes do sistema. Cuidado ao executa-los pois seu log sera zerado. Caso tenha logs ja prontos e deseje mante-los, faça um backup externo.
+
+<p id = "testes2"> </p>
+
+### Como rodar os testes 
+Dentro da pasta do programa execute:
+```bash
+Para testes de HTTP:
+	HTTP válido:
+	./tests/valid_http.sh
+
+	HTTP invalido:
+	./tests/invalid_http.sh
+	
+	PING valido:
+	./tests/valid_ping.sh
+	
+	PING invalido:
+	./tests/invalid_ping.sh
+	
+	DNS valido:
+	./tests/valid_dns.sh
+	
+	DNS invalido:
+	./tests/invalid_dns.sh
+
+	Todos os serviços validos:
+	./tests/valid_service.sh
+
+	Todos os serviços invalidos:
+	./tests/invalid_service.sh
+
+	Teste para todos os serviços:
+	./tests/general_test.sh
+```
+
+#
+# Log
 
 <p id = "log"> </p>
 
-## Sobre o log que é gerado
+## Log gerado
 
 O log que aparece no terminal contém informações como: nome do monitorado, url requisitada, resultado esperado, resultado do ultimo teste.
 

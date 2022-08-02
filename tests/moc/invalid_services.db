@@ -1,0 +1,6 @@
+intra	HTTP	intra_ft.43.ru	GET	301	15
+google	HTTP	guugule.com	GET	301	20
+yahoo	DNS	yahoo.com	4	123.123.123.123
+google	DNS	google.com	3	12.0.66.8
+game ping test	PING	games.43to.org.cn	4
+workspaces monitoring	PING	workspa.43ba.org.br	6
