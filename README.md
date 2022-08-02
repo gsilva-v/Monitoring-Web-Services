@@ -34,7 +34,7 @@
 <p id = "funcionamento"> </p>
 
 ## Como é o seu funcionamento:
-Basicamente é feito requisições ao monitorados e tento uma resposta que já esta configurada como esperada, que seja comparada com a recebida para verificar se o serviço está dentro do padrão. 
+Basicamente é feito requisições ao monitorados e tendo uma resposta que já esta configurada como esperada, que seja comparada com a recebida para verificar se o serviço está dentro do padrão. 
 
 <p id = "http"> </p>
 
@@ -120,9 +120,9 @@ O programa deve começar a ser executado logo em seguida, mostrando os status do
 ### Flags
 
 Podemos usar com flags: 
+ - `--help` irá mostrar como passar os argumentos corretamente para a execução.
  - `--simplify ou -s` irá simplificar o log gerado.
  - `--pretty` irá deixar o log com uma aparencia mais agradável.
- - `--help` irá mostrar como passar os argumentos corretamente para a execução.
  - `--http=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo HTTP
  - `--ping=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo PING
  - `--dns=[yes/no]` irá ativar ou desativar o monitoramento para o protocólo DNS
@@ -176,14 +176,14 @@ Para testes de HTTP:
 
 ## Log gerado
 
-O log que aparece no terminal contém informações como: nome do monitorado, url requisitada, resultado esperado, resultado do ultimo teste.
+O log que aparece no terminal contém informações como: nome do serviço monitorado, url requisitada, resultado esperado, resultado do ultimo teste.
 
-Para simplificar esse log, você pode usar a flag `--simplify` ou `-s` . Com a flag ativada, o log sera reduzido a apenas: nome do monitorado, resultado to ultimo teste.
+Para simplificar esse log, você pode usar a flag `--simplify` ou `-s` . Com a flag ativa, o log sera reduzido a apenas: nome do monitorado, resultado to ultimo teste.
 
 Caso queira um log mais agradável aos olhos, a flag `--pretty` poderá resolver isso. A flag fará o log que esta sendo gerado ter um formato mais natural a leitura. As informações não diferem muito da original, porém se torna muito mais legivel.
 
-### Quais sinais deve receber mais atenção
-Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontra em `/logs/errors.log` , nesse arquivo terá, com mais profundidade qual o problema ocorrido sobre o monitorado.
+### Quais sinais deve receber mais atenção?
+Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontra em `/logs/errors.log` , nesse arquivo terá, com mais profundidade qual o problema ocorrido sobre o serviço monitorado.
 
 #
 <p id = "melhorias"> </p>
@@ -194,7 +194,7 @@ Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontr
 - Implementar algum tipo de interface gráfica, com um ambiente mais agradável.
 - Implementar a captação de sinais para desligamento, o que resolveria boa parte dos leaks do programa.
 
-
+#
 <p id = "Bibliografia"> </p>
 
 # Bibliografia

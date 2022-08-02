@@ -1,0 +1,36 @@
+Ideia inicial:
+	Parsear o arquivo monitoring.db.
+	Cada handler seria uma thread que iria lida com cada monitoração.
+	Enviar as configurações pra um handler dependendo do metodo usado.
+
+O que mudou:
+	Não usei as threads, daria um trabalho que demandaria mais tempo, 
+	e o resultado final nao seria tão diferente do desejado.
+
+
+
+Pensamento de flags:
+	A flag simplify era obrigatória.
+	A flag help é uma flag basica na maioria dos programas UNIX.
+	As flags de ativação ou desativação dos protocolos veio durante o desenvolvimento,
+	enquanto testava coisas de um protocolo, não me agradava ter outro poluindo o terminal.
+	A flag pretty foi desenvolvida com a intenção de embelezar o log, sem ela, o log parece um monstro
+	A flag times veio enquanto desenvolvia os testes em bash e nao sabia como iria parar o programa,
+	ja que ele nao tem um fim
+
+O output do terminal:
+	São as informações mais basica sobre oq está acontecendo, nao tem muitos detalhes la, mas poderia ser algo mais bonito
+
+ 
+A estrutura do projeto:
+	Depois que comecei a mexer com linguagens com OO, interfaces, essa estrutura que o projeto ficou
+	se tornou algo natural. Também pela facilidade de implementar novas coisas ao funcionamento principal.
+	Colocar uma flag com essa estrutura é uma coisa bem simples.
+	No fim do projeto, a estrutura se aparenta bastante com um interface de C++, claro, com limitações enormes
+	mas vizualmente bonito e organizado.
+
+As ferramentas usadas:
+	Basicamente o projeto é todo feito com a LibCurl, tirando o DNS que nao encontrei uma boa lib e usei o bom e velho system("");, 
+
+
+
