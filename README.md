@@ -31,7 +31,7 @@ O monitor DNS usa o endereço IP do host para pesquisar o nome do host ou o nome
 # Instalação e Funcionamento
 Siga os proximos passos para fazer uso da ferramenta: 
 ## Como instalar
-Antes, você deve garantir que as bibliotecas necessárias estão instaladas no seu ambiente:
+Antes, você deve garantir que a biblioteca necessária está instalada no seu ambiente:
 
 - [Libcurl](https://curl.se/libcurl/)
 
@@ -41,7 +41,7 @@ git clone https://github.com/42sp/42labs-selection-process-v2-gsilva-v WebServic
 ```
 Após a conclusão execute:
 ```bash
-cd WebServiceMonitor && make build
+cd WebServiceMonitor && make
 ```
 Ao fim da compilação, o monitor estará pronto para ser usado.
 
@@ -74,7 +74,9 @@ google	DNS	google.com	30	8.8.8.8
 
 ## Como usar a ferramenta
 Após a compilação e criação do seu arquivo de configuração, execute em seu terminal:
-```./monitoring ./conf/{seu_arquivo}```
+```bash 
+./monitoring ./conf/{seu_arquivo}
+```
 
 O programa deve começar a ser executado logo em seguida, mostrando os status dos monitorados.
 
@@ -93,12 +95,21 @@ Também podemos usar com flags:
 
 O log que aparece no terminal contém informações como: nome do monitorado, url requisitada, resultado esperado, resultado do ultimo teste.
 
-Para simplificar esse log, você pode usar a flag `--simplify`. Com a flag ativada, o log sera reduzido a apenas: nome do monitorado, resultado to ultimo teste.
+Para simplificar esse log, você pode usar a flag `--simplify` ou `-s` . Com a flag ativada, o log sera reduzido a apenas: nome do monitorado, resultado to ultimo teste.
+
+Caso queira um log mais agradável aos olhos, a flag `--pretty` poderá resolver isso. A flag fará o log que esta sendo gerado ter um formato mais natural a leitura. As informações não diferem muito da original, porém se torna muito mais legivel.
 
 ### Quais sinais deve receber mais atenção
-Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontra em `/logs/errors.log`, nesse arquivo terá, com mais profundidade qual o problema ocorrido sobre o monitorado.
+Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontra em `/logs/errors.log` , nesse arquivo terá, com mais profundidade qual o problema ocorrido sobre o monitorado.
 
 #
+# Possíveis melhorias
+- Implementar o monitoramento por TCP.
+- Colocar cada tipo de monitoramento numa thread, evitando alguns problemas como atrasar outros monitoramentos caso algum venha a falhar.
+- Implementar algum tipo de interface gráfica, com um ambiente mais agradável.
+- Implementar a captação de sinais para desligamento, o que resolveria boa parte dos leaks do programa.
+
+
 # Bibliografia
 - [IBM Internet Service Monitoring](https://www.ibm.com/docs/en/capm?topic=interface-available-internet-service-monitoring-monitors)
 

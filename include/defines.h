@@ -23,13 +23,15 @@
 # define PLOGSKO "%s; Monitored: %s; Protocol: %s; Ping : Failed;\n"
 // Pretty
 # define PPLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\n"
-# define PPLOGKO "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\nFailed to resolve Ping with this service\n"
+# define PPLOGKO "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\n\
+Failed to resolve Ping with this service\n"
 # define PPLOGSOK "Date: %s\nMonitored: %s\nPing : %.1f ms\n"
 # define PPLOGSKO "Date: %s\nMonitored: %s\nProtocol: %s\nFailed to resolve Ping with this service\n" 
 
 /*HTTP Macros*/ 
 # define HTTPR "HTTP routine started: checking necessary requests ...\n"
-# define HLOG "%s Monitored: %s -> Url: %s; Protocol: %s; Expected Status: %d; Returned Status: %d; Working : %s; Ping: %.1f ms\n"
+# define HLOG "%s Monitored: %s -> Url: %s; Protocol: %s; Expected Status: %d; \
+Returned Status: %d; Working : %s; Ping: %.1f ms\n"
 # define HLOGKO "%s; Monitored: %s; Url: %s; Protocol: %s; \
 Expected Status: %d; Returned Status: %d; Working : %s; \
 Check the address of service and try again; Ping: %.1f ms;"
@@ -46,21 +48,19 @@ Check the address of service and try again\nPing: %.1f ms\n"
 
 /*DNS Macros*/ 
 # define DNSR "DNS routine started: checking necessary requests ...\n"
+# define FDNSH "Failed in DNS Handler\n"
+# define DNSFLAGS " +timeout=1 +nocomments +short"
 # define DLOGOK "%s Monitored: %s -> Url: %s; Protocol: %s; Working : OK; Ping: %.1f ms\n"
-# define DLOGKO "%s Monitored: %s -> Url: %s; Protocol: %s; Working : KO Service not found in DNS server \'%s\'; Ping: Fail ms\n"
+# define DLOGKO "%s Monitored: %s -> Url: %s; Protocol: %s; Working : KO \
+Service not found in DNS server \'%s\'; Ping: Fail ms\n"
 # define DLOGSOK "%s Monitored: %s -> Protocol: %s; Working : OK;\n"
 # define DLOGSKO "%s Monitored: %s -> Protocol: %s; Working : KO\n"
 // Pretty
 # define PDLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nWorking : OK\nPing: %.1f ms\n"
-# define PDLOGKO "Date: %s Monitored: %s\nUrl: %s\nProtocol: %s\nWorking : Service not found in DNS server \'%s\'\nPing: Fail ms\n"
+# define PDLOGKO "Date: %s Monitored: %s\nUrl: %s\nProtocol: %s\nWorking : \
+Service not found in DNS server \'%s\'\nPing: Fail ms\n"
 # define PDLOGSOK "Date: %s Monitored: %s\nProtocol: %s\nWorking : OK\n"
 # define PDLOGSKO "Date: %s Monitored: %s\nProtocol: %s\nWorking : KO\n"
-
-
-
-# define FDNSH "Failed in DNS Handler\n"
-# define DNSFLAGS " +timeout=1 +nocomments +short"
-
 
 /*Error Messages Macros*/ 
 # define INVUSE "Sintax error: Invalid flags or option; %s\nUse \"--help\" to see how to use command\n"

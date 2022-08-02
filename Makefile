@@ -51,8 +51,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
-build: all
-
 re: fclean all
 
 .PHONY: all  clean fclean $(PATH_OBJS) re

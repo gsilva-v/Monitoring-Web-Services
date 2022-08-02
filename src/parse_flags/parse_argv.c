@@ -1,50 +1,63 @@
 #include "monitoring.h"
 
-static	void initialize_conf(void);
-
-void	check_flags(char **args){
-	initialize_conf();
-	for(int i = 0; args[i]; i++){
-		if (strstr(args[i], FSIMP) || strstr(args[i], FS))
-			conf.simplified = true;
-		else if (strstr(args[i], FHELP))
-			error_exit(HELP,1);
-		else if (strstr(args[i], FHTTP)){
-			if (strstr(args[i], FHTTPOFF))
-				conf.http = false;
-			else if (strstr(args[i], FHTTPON))
-				conf.http = true;
-			else 
-				goto stop;
-		} else if (strstr(args[i], FPING)){
-			if (strstr(args[i], FPINGOFF))
-				conf.ping = false;
-			else if (strstr(args[i], FPINGON))
-				conf.ping = true;
-			else 
-				goto stop;
-		} else if (strstr(args[i], FDNS)){
-			if (strstr(args[i], FDNSOFF))
-				conf.dns = false;
-			else if (strstr(args[i], FDNSON))
-				conf.dns = true;
-			else 
-				goto stop;
-		} else if (strstr(args[i], PRETTY))
-			conf.pretty = true;
-		else if (strstr(args[i], "-"))
-			goto stop;
-	}
-	return ;
-	stop : error_exit(INVOPT, 1);
+static bool	http_flag(char *flag){
+	if (!strcmp(flag, FHTTPOFF))
+		conf.http = false;
+	else if (!strcmp(flag, FHTTPON))
+		conf.http = true;
+	else
+		return false;
+	return true;
 }
 
-char	*find_conf(char **args){
-	for(int i = 0; args[i]; i++){
-		if (strstr(args[i], DBEXT))
-			return args[i];
+static bool	ping_flag(char *flag){
+	if (!strcmp(flag, FPINGOFF))
+		conf.ping = false;
+	else if (!strcmp(flag, FPINGON))
+		conf.ping = true;
+	else
+		return false;
+	return true;
+}
+
+static bool	dns_flag(char *flag){
+	if (!strcmp(flag, FDNSOFF))
+		conf.dns = false;
+	else if (!strcmp(flag, FDNSON))
+		conf.dns = true;
+	else
+		return false;
+	return true;
+}
+
+static bool	beautify_checker(char *flag){
+	if (!strcmp(flag, FSIMP) || !strcmp(flag, FS)){
+		conf.simplified = true;
+		return true;
+	} else if (strstr(flag, PRETTY)){
+		conf.pretty = true;
+		return true;
 	}
-	return NULL;
+	return false;
+}
+
+static void	help_checker(char *flag){
+	if (!strcmp(flag, FHELP))
+		error_exit(HELP, 1);
+}
+
+static void	protocol_checker(char *flag){
+	if (strstr(flag, FHTTP)){
+		if (!http_flag(flag))
+			error_exit(INVOPT, 1);
+	} else if (strstr(flag, FPING)){
+		if (!ping_flag(flag))
+			error_exit(INVOPT, 1);
+	} else if (strstr(flag, FDNS)){
+		if(!dns_flag(flag))
+			error_exit(INVOPT, 1);
+	} else if (flag[0] == '-')
+			error_exit(INVOPT, 1);
 }
 
 static	void initialize_conf(void){
@@ -53,4 +66,22 @@ static	void initialize_conf(void){
 	conf.http = true;
 	conf.ping = true;
 	conf.dns = true;
+}
+
+void	check_flags(char **args){
+	initialize_conf();
+	for(int i = 0; args[i]; i++){
+		if (beautify_checker(args[i]))
+			continue ;
+		help_checker(args[i]);
+		protocol_checker(args[i]);
+	}
+}
+
+char	*find_conf(char **args){
+	for(int i = 0; args[i]; i++){
+		if (strstr(args[i], DBEXT))
+			return args[i];
+	}
+	return NULL;
 }
