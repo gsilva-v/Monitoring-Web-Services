@@ -92,5 +92,4 @@ Service not found in DNS server \'%s\'\nPing: Fail ms\n"
 # define DBEXT ".db"
 # define PRETTY "--pretty"
 
-
 #endif // DEFINES_H

@@ -60,12 +60,16 @@ static void	protocol_checker(char *flag){
 			error_exit(INVOPT, 1);
 }
 
-static	void initialize_conf(void){
+static void initialize_conf(void){
 	conf.simplified = false;
 	conf.pretty = false;
 	conf.http = true;
 	conf.ping = true;
 	conf.dns = true;
+	conf.log_fd = open("./logs/success.log", O_CREAT| O_RDWR | O_APPEND, 0777);
+	conf.error_log_fd = open("./logs/errors.log", O_CREAT | O_APPEND | O_RDWR, 0777);
+	if (conf.log_fd < 0 || conf.error_log_fd < 0)
+			error_exit(LOGFAIL, 1);
 }
 
 void	check_flags(char **args){
