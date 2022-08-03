@@ -41,7 +41,7 @@ static bool	beautify_checker(char *flag){
 	return false;
 }
 
-static bool help_checker(char *flag){
+static bool	help_checker(char *flag){
 	if (!strcmp(flag, FHELP))
 		error_exit(HELP, 1);
 	else if (strstr(flag, TIMES)){
@@ -63,28 +63,28 @@ static void	protocol_checker(char *flag){
 		if (!ping_flag(flag))
 			error_exit(INVOPT, 1);
 	} else if (strstr(flag, FDNS)){
-		if(!dns_flag(flag))
+		if (!dns_flag(flag))
 			error_exit(INVOPT, 1);
 	} else if (flag[0] == '-')
-			error_exit(INVOPT, 1);
+		error_exit(INVOPT, 1);
 }
 
-static void initialize_conf(void){
+static void	initialize_conf(void){
 	conf.simplified = false;
 	conf.times = 0;
 	conf.pretty = false;
 	conf.http = true;
 	conf.ping = true;
 	conf.dns = true;
-	conf.log_fd = open("./logs/success.log", O_CREAT| O_RDWR | O_APPEND, 0777);
-	conf.error_log_fd = open("./logs/errors.log", O_CREAT | O_APPEND | O_RDWR, 0777);
+	conf.log_fd = open(LOGSUC, O_CREAT| O_RDWR | O_APPEND, 0777);
+	conf.error_log_fd = open(LOGERR, O_CREAT | O_APPEND | O_RDWR, 0777);
 	if (conf.log_fd < 0 || conf.error_log_fd < 0)
-			error_exit(LOGFAIL, 1);
+		error_exit(LOGFAIL, 1);
 }
 
 void	check_flags(char **args){
 	initialize_conf();
-	for(int i = 0; args[i]; i++){
+	for (int i = 0; args[i]; i++){
 		if (beautify_checker(args[i]) || help_checker(args[i]))
 			continue ;
 		protocol_checker(args[i]);
@@ -94,7 +94,7 @@ void	check_flags(char **args){
 }
 
 char	*find_conf(char **args){
-	for(int i = 0; args[i]; i++){
+	for (int i = 0; args[i]; i++){
 		if (strstr(args[i], DBEXT))
 			return args[i];
 	}

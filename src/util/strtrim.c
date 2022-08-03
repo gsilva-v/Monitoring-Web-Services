@@ -9,7 +9,7 @@ char	*strtrim(char *s1, char const *set){
 	while (s1[start] && char_in_set(s1[start], set))
 		start ++;
 	len = strlen(s1);
-	while (len > start && char_in_set(s1[len - 1 ], set))
+	while (len > start && char_in_set(s1[len - 1], set))
 		len--;
 	str = (char *) malloc(sizeof(*s1) * (len - start + 1));
 	while (start < len)
@@ -20,7 +20,7 @@ char	*strtrim(char *s1, char const *set){
 }
 
 static int	char_in_set(char c, char const *set){
-	for (size_t i = 0 ; set[i]; i++){
+	for (size_t i = 0; set[i]; i++){
 		if (set[i] == c)
 			return 1;
 	}

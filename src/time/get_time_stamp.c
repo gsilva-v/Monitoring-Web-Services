@@ -7,6 +7,6 @@ char	*get_time_stamp(void){
 
 	sprintf(buffer, "[%d:%d:%d %d/%d/%d] ", \
 		values->tm_hour, values->tm_min, values->tm_sec, \
-		values->tm_mday, values->tm_mon + 1 , values->tm_year + 1900);
+		values->tm_mday, values->tm_mon + 1, values->tm_year + 1900);
 	return buffer;
 }

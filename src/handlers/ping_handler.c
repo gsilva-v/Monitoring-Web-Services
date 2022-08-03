@@ -20,7 +20,7 @@ int	ping_manager(PING_Monitoring **monitor){
 	return 1;
 }
 
-static bool has_awake(PING_Monitoring **monitor){
+static bool	has_awake(PING_Monitoring **monitor){
 	for (int i = 0; monitor[i]; i++){
 		if (passed_time(monitor[i]->last_monitoring) > monitor[i]->pause * 1000)
 			return true;
@@ -28,10 +28,18 @@ static bool has_awake(PING_Monitoring **monitor){
 	return false;
 }
 
-static size_t silent_curl(char *ptr, size_t size, size_t nmemb, void *userdata){
-    (void)ptr;
-    (void)userdata;
+static size_t	silent_curl(char *ptr, size_t size, size_t nmemb, void *userdata){
+	(void)ptr;
+	(void)userdata;
 	return size * nmemb;
+}
+
+static CURL	*set_options_curl(CURL *curl, PING_Monitoring *monitor){
+	curl_easy_setopt(curl, CURLOPT_URL, monitor->url);
+	curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
+	curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, silent_curl);
+	curl_easy_setopt(curl, CURLOPT_WRITEDATA, NULL);
+	return curl;
 }
 
 static void	ping_handler(PING_Monitoring *monitor){
@@ -39,12 +47,9 @@ static void	ping_handler(PING_Monitoring *monitor){
 	long	finish_time, init_time = current_time();
 
 	if (curl){
-		curl_easy_setopt(curl, CURLOPT_URL, monitor->url);
-		curl_easy_setopt(curl, CURLOPT_HTTPGET, 1L);
-		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, silent_curl);
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, NULL);
+		curl = set_options_curl(curl, monitor);
 		if(curl_easy_perform(curl) != CURLE_OK){
-			printf("Ping: Name or service not know\n");
+			printf(FPINGH);
 			monitor->latency = 0;
 			monitor->last_request_status = false;
 			goto showlog;

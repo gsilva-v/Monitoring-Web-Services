@@ -1,0 +1,6 @@
+intra errada	HTTP	intra.43.go	GET	301	4
+google	HTTP	google.com	GET	301	1
+yahoo dns errado	DNS	yahoo.com	4	12.55.9.1
+youtube	DNS	youtube.com	3	8.8.8.8
+git ft	PING	githubft.com	4
+workspaces monitoring	PING	workspaces.42sp.org.br	6

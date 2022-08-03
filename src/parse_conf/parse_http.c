@@ -1,12 +1,12 @@
 #include "monitoring.h"
 
 static int	count_http(char *file_conf);
-static HTTP_Monitoring *set_config(char **conf);
+static HTTP_Monitoring	*set_config(char **conf);
 static bool	check_line(char **line);
 
 HTTP_Monitoring	**parse_http(char *file_conf){
 	char			*buffer = NULL;
-	char			**conf = NULL; 
+	char			**conf = NULL;
 	int				i = 0, count = count_http(file_conf);
 	size_t			buffer_size = 0;
 	HTTP_Monitoring	**ret = calloc(count, sizeof(HTTP_Monitoring));
@@ -18,7 +18,7 @@ HTTP_Monitoring	**parse_http(char *file_conf){
 		return NULL;
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "HTTP")){
-			conf = split(buffer, '\t');	
+			conf = split(buffer, '\t');
 			if (check_line(conf) == false){
 				free_matrix(conf);
 				error_exit(INVTABS, 1);

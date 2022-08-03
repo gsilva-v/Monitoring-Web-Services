@@ -1,9 +1,8 @@
 #include "monitoring.h"
 
 void	miliseconds_sleep(int time_in_ms){
-	long	start_time;
+	long	start_time = current_time();
 
-	start_time = current_time();
 	while ((current_time() - start_time) < (long)time_in_ms)
 		usleep(10);
 }

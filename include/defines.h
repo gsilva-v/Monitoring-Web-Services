@@ -1,7 +1,10 @@
 #if !defined(DEFINES_H)
 # define DEFINES_H
 
-/*General Macros*/ 
+/*General Macros*/
+# define LOGSUC "./logs/success.log"
+# define LOGERR "./logs/errors.log"
+# define LOGDNS "./logs/dns.log"
 # define SUCCESS "OK Success"
 # define FAILED "KO The service didn't respond as expected, something might be broken"
 # define MONITORED "%s\nMonitored: \033[33m%s\n"
@@ -14,21 +17,8 @@
 # define FAIL "Some error happened, see \'errors.log\' for more information\n"
 # define DIVL "===========================\n"
 
-/*Ping Macros*/ 
-# define PINGR "Ping routine started: checking necessary requests ...\n"
-# define PING "\033[0mPing: %.1f ms\033[0m\n\n"
-# define PLOGOK "%s; Monitored: %s; Url: %s; Protocol: %s; Ping : %.1f;\n"
-# define PLOGKO "%s; Monitored: %s; Protocol: %s; Failed to resolve Ping with this service\n"
-# define PLOGSOK "%s; Monitored: %s; Ping : %.1f;\n"
-# define PLOGSKO "%s; Monitored: %s; Protocol: %s; Ping : Failed;\n"
-// Pretty
-# define PPLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\n"
-# define PPLOGKO "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\n\
-Failed to resolve Ping with this service\n"
-# define PPLOGSOK "Date: %s\nMonitored: %s\nPing : %.1f ms\n"
-# define PPLOGSKO "Date: %s\nMonitored: %s\nProtocol: %s\nFailed to resolve Ping with this service\n" 
-
 /*HTTP Macros*/ 
+# define FHTTPH "HTTP Monitor failed: %s\n"
 # define HTTPR "HTTP routine started: checking necessary requests ...\n"
 # define HLOG "%s Monitored: %s -> Url: %s; Protocol: %s; Expected Status: %d; \
 Returned Status: %d; Working : %s; Ping: %.1f ms\n"
@@ -45,6 +35,21 @@ Expected Status: %d\nReturned Status: %d\nWorking : %s; \nPing: %.1f ms\n"
 Expected Status: %d\nReturned Status: %d\nWorking : %s; \
 Check the address of service and try again\nPing: %.1f ms\n"
 # define PHLOGS "Date: %s\nMonitored: %s\nProtocol: %s\nWorking : %s\n"
+
+/*Ping Macros*/
+# define PINGR "Ping routine started: checking necessary requests ...\n"
+# define PING "\033[0mPing: %.1f ms\033[0m\n\n"
+# define FPINGH "Ping: Name or service not know\n"
+# define PLOGOK "%s Monitored: %s; Url: %s; Protocol: %s; Ping : %.1f;\n"
+# define PLOGKO "%s Monitored: %s; Protocol: %s; Failed to resolve Ping with this service\n"
+# define PLOGSOK "%s Monitored: %s; Ping : %.1f;\n"
+# define PLOGSKO "%s Monitored: %s; Protocol: %s; Ping : Failed;\n"
+// Pretty
+# define PPLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\n"
+# define PPLOGKO "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nPing : %.1f ms\n\
+Failed to resolve Ping with this service\n"
+# define PPLOGSOK "Date: %s\nMonitored: %s\nPing : %.1f ms\n"
+# define PPLOGSKO "Date: %s\nMonitored: %s\nProtocol: %s\nFailed to resolve Ping with this service\n" 
 
 /*DNS Macros*/ 
 # define DNSR "DNS routine started: checking necessary requests ...\n"
@@ -94,4 +99,5 @@ Service not found in DNS server \'%s\'\nPing: Fail ms\n"
 # define DBEXT ".db"
 # define PRETTY "--pretty"
 # define TIMES "--times="
+
 #endif // DEFINES_H

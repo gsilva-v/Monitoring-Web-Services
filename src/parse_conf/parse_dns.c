@@ -2,12 +2,12 @@
 
 static int	count_dns(char *file_conf);
 static bool	check_line(char **line);
-static DNS_Monitoring *set_config(char **conf);
-static char	*make_dns_query(DNS_Monitoring* parse);
+static DNS_Monitoring	*set_config(char **conf);
+static char	*make_dns_query(DNS_Monitoring *parse);
 
 DNS_Monitoring	**parse_dns(char *file_conf){
 	char			*buffer = NULL;
-	char			**conf = NULL; 
+	char			**conf = NULL;
 	int				i = 0, count = count_dns(file_conf);
 	size_t			buffer_size = 0;
 	DNS_Monitoring	**ret = calloc(count, sizeof(DNS_Monitoring));
@@ -19,7 +19,7 @@ DNS_Monitoring	**parse_dns(char *file_conf){
 		return NULL;
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "DNS")){
-			conf = split(buffer, '\t');	
+			conf = split(buffer, '\t');
 			if (check_line(conf) == false){
 				free_matrix(conf);
 				error_exit(INVTABS, 1);
@@ -49,13 +49,13 @@ static int	count_dns(char *file_conf){
 	return (dns_counter);
 }
 
-static char	*make_dns_query(DNS_Monitoring* parse){
+static char	*make_dns_query(DNS_Monitoring *parse){
 	char	*query = strjoin(strdup("dig @"), parse->dns_server);
 
 	query = strtrim(query, "\n");
 	query = strjoin(query, " ");
 	query = strjoin(query, parse->url);
-	query = strjoin(query, DNSFLAGS);	
+	query = strjoin(query, DNSFLAGS);
 	return query;
 }
 
@@ -66,7 +66,7 @@ static DNS_Monitoring	*set_config(char **conf){
 	ret->protocol = strdup(conf[1]);
 	ret->url = strdup(conf[2]);
 	ret->pause = atoi(conf[3]);
-	ret->dns_server = strdup(conf[4]);
+	ret->dns_server = strtrim(strdup(conf[4]), "\n");
 	ret->query = make_dns_query(ret);
 	ret->last_monitoring = current_time();
 	return ret;

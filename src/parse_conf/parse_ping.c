@@ -1,12 +1,12 @@
 #include "monitoring.h"
 
 static int	count_ping(char *file_conf);
-static PING_Monitoring *set_config(char **conf);
+static PING_Monitoring	*set_config(char **conf);
 static bool	check_line(char **line);
 
-PING_Monitoring **parse_ping(char *file_conf){
+PING_Monitoring	**parse_ping(char *file_conf){
 	char			*buffer = NULL;
-	char			**conf = NULL; 
+	char			**conf = NULL;
 	int				i = 0, count = count_ping(file_conf);
 	size_t			buffer_size = 0;
 	PING_Monitoring	**ret = calloc(count, sizeof(PING_Monitoring));
@@ -18,7 +18,7 @@ PING_Monitoring **parse_ping(char *file_conf){
 		return NULL;
 	while (getline(&buffer, &buffer_size, fd) >= 0){
 		if (strstr(buffer, "PING")){
-			conf = split(buffer, '\t');	
+			conf = split(buffer, '\t');
 			if (check_line(conf) == false){
 				free_matrix(conf);
 				error_exit(INVTABS, 1);
@@ -48,7 +48,7 @@ static int	count_ping(char *file_conf){
 	return (ping_counter);
 }
 
-static PING_Monitoring *set_config(char **conf){
+static PING_Monitoring	*set_config(char **conf){
 	PING_Monitoring	*ret = calloc(1, sizeof(PING_Monitoring));
 
 	ret->name = strdup(conf[0]);

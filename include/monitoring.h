@@ -23,7 +23,7 @@ typedef struct monitoring_http {
 	long	last_monitoring;
 	bool	last_request_status;
 	float	latency;
-} HTTP_Monitoring;
+}	HTTP_Monitoring;
 
 typedef struct monitoring_ping {
 	char	*name;
@@ -33,7 +33,7 @@ typedef struct monitoring_ping {
 	long	last_monitoring;
 	bool	last_request_status;
 	float	latency;
-} PING_Monitoring;
+}	PING_Monitoring;
 
 typedef struct monitoring_dns {
 	char	*name;
@@ -45,7 +45,7 @@ typedef struct monitoring_dns {
 	long	last_monitoring;
 	bool	last_request_status;
 	float	latency;
-} DNS_Monitoring;
+}	DNS_Monitoring;
 
 typedef struct conf {
 	int		log_fd;
@@ -56,9 +56,9 @@ typedef struct conf {
 	bool	dns;
 	bool	http;
 	bool	ping;
-} t_conf ;
+}	t_conf;
 
-extern t_conf conf;
+extern t_conf	conf;
 
 /* CONF */
 void			check_flags(char **args);
