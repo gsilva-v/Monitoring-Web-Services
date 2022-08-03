@@ -27,14 +27,14 @@
  O Monitoramento de Serviço Web funciona emulando as ações de um usuário real. Ele pesquisa e testa regularmente os serviços da Internet para verificar seu status e desempenho.
 
 ### E para que serve?
-- É possível avaliar o desempenho dos seus websites e controlar a sua nuvem e (outros) serviços.
+- É possível avaliar o desempenho dos seus websites e serviços.
 - Uma ferramenta de monitoramento pode ser usada para executar um teste de ping. O ping indica se é possível conectar-se ao seu website.
 - O monitoramento de serviços de Internet também ajuda a reduzir o tempo de inatividade (ou seja, impedir panes nos seus servidores).
 
 <p id = "funcionamento"> </p>
 
 ## Como é o seu funcionamento:
-Basicamente é feito requisições ao monitorados e tendo uma resposta que já esta configurada como esperada, que seja comparada com a recebida para verificar se o serviço está dentro do padrão. 
+Basicamente são feitas requisições aos serviços e tendo uma resposta que já está configurada como esperada, que seja comparada com a recebida para verificar se o serviço está dentro do padrão.
 
 <p id = "http"> </p>
 
@@ -176,9 +176,9 @@ Para testes de HTTP:
 
 ## Log gerado
 
-O log que aparece no terminal contém informações como: nome do serviço monitorado, url requisitada, resultado esperado, resultado do ultimo teste.
+O log que aparece no terminal contém informações como: horário da checagem, nome do serviço monitorado, protocólo, url requisitada, resultado esperado, resultado do ultimo teste.
 
-Para simplificar esse log, você pode usar a flag `--simplify` ou `-s` . Com a flag ativa, o log sera reduzido a apenas: nome do monitorado, resultado to ultimo teste.
+Para simplificar esse log, você pode usar a flag `--simplify` ou `-s` . Com a flag ativa, o log sera reduzido a apenas: horário, nome do monitorado, protocólo, resultado to ultimo teste.
 
 Caso queira um log mais agradável aos olhos, a flag `--pretty` poderá resolver isso. A flag fará o log que esta sendo gerado ter um formato mais natural a leitura. As informações não diferem muito da original, porém se torna muito mais legivel.
 
@@ -189,9 +189,9 @@ Caso apareça algum log negativo, ele sera jogado para um arquivo que se encontr
 <p id = "melhorias"> </p>
 
 # Possíveis melhorias
-- Implementar o monitoramento por TCP.
-- Colocar cada tipo de monitoramento numa thread, evitando alguns problemas como atrasar outros monitoramentos caso algum venha a falhar.
-- Implementar algum tipo de interface gráfica, com um ambiente mais agradável.
+- Implementação do monitoramento por TCP.
+- Transferir cada tipo de monitoramento numa thread, evitando alguns problemas como atrasar outros monitoramentos caso algum venha a falhar.
+- Implementar uma interface gráfica, com um ambiente mais agradável.
 - Implementar a captação de sinais para desligamento, o que resolveria boa parte dos leaks do programa.
 
 #

@@ -7,8 +7,6 @@ O que mudou:
 	Não usei as threads, daria um trabalho que demandaria mais tempo, 
 	e o resultado final nao seria tão diferente do desejado.
 
-
-
 Pensamento de flags:
 	A flag simplify era obrigatória.
 	A flag help é uma flag basica na maioria dos programas UNIX.
@@ -32,5 +30,8 @@ A estrutura do projeto:
 As ferramentas usadas:
 	Basicamente o projeto é todo feito com a LibCurl, tirando o DNS que nao encontrei uma boa lib e usei o bom e velho system("");, 
 
-
+O que faltou ou não ficou como desejado:
+	Não queria manter o monitoramento do dns com o system, queria poder trocar pra alguma lib mais apropriada.
+	A flag times tem alguns bugs que podem faze-la nao funcionar corretamente. Devem ser consertados em breve.
+	
 
