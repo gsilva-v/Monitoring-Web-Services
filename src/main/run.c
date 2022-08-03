@@ -13,8 +13,7 @@ void	run(char *file_conf){
 			times += ping_manager(ping);
 		if (dns && conf.dns)
 			times += dns_manager(dns);
-		if (conf.times != 0 && times == conf.times)
+		if (conf.times != 0 && times >= conf.times)
 			break;
-
 	}
 }

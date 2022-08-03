@@ -44,8 +44,10 @@ static bool	beautify_checker(char *flag){
 static bool help_checker(char *flag){
 	if (!strcmp(flag, FHELP))
 		error_exit(HELP, 1);
-	else if (strstr(flag, "--times=")){
+	else if (strstr(flag, TIMES)){
 		char **times = split(flag, '=');
+		if (matrix_len(times) != 2)
+			error_exit(INVOPT, 1);
 		conf.times = atoi(times[1]);
 		free_matrix(times);
 		return true;

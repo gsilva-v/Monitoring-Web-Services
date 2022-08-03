@@ -57,10 +57,10 @@ Service not found in DNS server \'%s\'; Ping: Fail ms\n"
 # define DLOGSKO "%s Monitored: %s -> Protocol: %s; Working : KO\n"
 // Pretty
 # define PDLOGOK "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nWorking : OK\nPing: %.1f ms\n"
-# define PDLOGKO "Date: %s Monitored: %s\nUrl: %s\nProtocol: %s\nWorking : \
+# define PDLOGKO "Date: %s\nMonitored: %s\nUrl: %s\nProtocol: %s\nWorking : \
 Service not found in DNS server \'%s\'\nPing: Fail ms\n"
-# define PDLOGSOK "Date: %s Monitored: %s\nProtocol: %s\nWorking : OK\n"
-# define PDLOGSKO "Date: %s Monitored: %s\nProtocol: %s\nWorking : KO\n"
+# define PDLOGSOK "Date: %s\nMonitored: %s\nProtocol: %s\nWorking : OK\n"
+# define PDLOGSKO "Date: %s\nMonitored: %s\nProtocol: %s\nWorking : KO\n"
 
 /*Error Messages Macros*/ 
 # define INVUSE "Sintax error: Invalid flags or option; %s\nUse \"--help\" to see how to use command\n"
@@ -93,5 +93,5 @@ Service not found in DNS server \'%s\'\nPing: Fail ms\n"
 # define FDNSOFF "--dns=no"
 # define DBEXT ".db"
 # define PRETTY "--pretty"
-
+# define TIMES "--times="
 #endif // DEFINES_H
